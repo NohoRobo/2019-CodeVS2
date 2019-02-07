@@ -29,7 +29,8 @@ public class RobotMap {
   public static int neoLeft3;
   public static int neoRight1;
   public static int neoRight2;
-  public static int neoRight3; 
+  public static int neoRight3;
+
   //Lift
   public static int liftEncoder;
   public static int lift7751;
@@ -42,6 +43,7 @@ public class RobotMap {
   public static int intakeRollerSolenoid;
   public static int intakePistonSolenoid1;
   public static int intakePistonSolenoid2;
+  public static int intakeUltrasonic;
 
 
 

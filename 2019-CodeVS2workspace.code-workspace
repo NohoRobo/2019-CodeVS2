@@ -3,5 +3,8 @@
 		{
 			"path": "nohorobo2019code"
 		}
-	]
+	],
+	"settings": {
+		"java.dependency.packagePresentation": "flat"
+	}
 }
