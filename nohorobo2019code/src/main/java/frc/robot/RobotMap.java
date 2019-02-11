@@ -50,8 +50,4 @@ public class RobotMap {
   public static int intakePistonSolenoid1;
   public static int intakePistonSolenoid2;
   public static int intakeUltrasonic;
-
-
-
-
 }
