@@ -24,12 +24,18 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   //Drive
-  public static int neoLeft1;
-  public static int neoLeft2;
-  public static int neoLeft3;
-  public static int neoRight1;
-  public static int neoRight2;
-  public static int neoRight3;
+  public static int neoLeftFront;
+  public static int neoLeftMiddle;
+  public static int neoLeftBack;
+  public static int neoRightFront;
+  public static int neoRightMiddle;
+  public static int neoRightBack;
+  public static int sparkMaxLeftFront;
+  public static int sparkMaxLeftMiddle;
+  public static int sparkMaxLeftBack;
+  public static int sparkMaxRightFront;
+  public static int sparkMaxRightMiddle;
+  public static int sparkMaxRightBack;
 
   //Lift
   public static int liftEncoder;

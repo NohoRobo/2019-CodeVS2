@@ -8,6 +8,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
+
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMaxLowLevel.*;
+
+import edu.wpi.first.wpilibj.*;
 
 /**
  * Add your docs here.
@@ -15,10 +23,41 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  CANSparkMax leftFront = new CANSparkMax(RobotMap.neoLeftFront, MotorType.kBrushless);
+  CANSparkMax leftMiddle = new CANSparkMax(RobotMap.neoLeftMiddle, MotorType.kBrushless);
+  CANSparkMax leftBack = new CANSparkMax(RobotMap.neoLeftBack, MotorType.kBrushless);
+  CANSparkMax rightFront = new CANSparkMax(RobotMap.neoRightFront, MotorType.kBrushless);
+  CANSparkMax rightMiddle = new CANSparkMax(RobotMap.neoRightMiddle, MotorType.kBrushless);
+  CANSparkMax rightBack = new CANSparkMax(RobotMap.neoRightBack, MotorType.kBrushless);
+  CANEncoder leftFrontEncoder = new CANEncoder(leftFront);
+  CANEncoder leftMiddleEncoder = new CANEncoder(leftMiddle);
+  CANEncoder leftBackEncoder = new CANEncoder(leftBack);
+  CANEncoder rightFrontEncoder = new CANEncoder(rightFront);
+  CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
+  CANEncoder rightBackEncoder = new CANEncoder(rightBack);
+  
 
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
+  public void SetLeftMotors(int speed){
+    leftFront.set(speed);
+    leftMiddle.set(speed);
+    leftBack.set(speed);
+  }
+
+  public void SetRightMotors(int speed){
+    rightFront.set(speed);
+    rightMiddle.set(speed);
+    rightBack.set(speed);
+  }
+
+  public void ReadLeftFrontEncoder(){
+    
+  }
+
 }
