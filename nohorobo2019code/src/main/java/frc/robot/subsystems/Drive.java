@@ -12,7 +12,6 @@ import frc.robot.RobotMap;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMaxLowLevel.*;
 
 import edu.wpi.first.wpilibj.*;
@@ -55,9 +54,24 @@ public class Drive extends Subsystem {
     rightMiddle.set(speed);
     rightBack.set(speed);
   }
-
+  
   public void ReadLeftFrontEncoder(){
-    
+    leftFrontEncoder.getPosition();
+  }
+  public void ReadLeftMiddleEncoder(){
+    leftMiddleEncoder.getPosition();
+  }
+  public void ReadLeftBackEncoder(){
+    leftBackEncoder.getPosition();
+  }
+  public void ReadRightFrontEncoder(){
+    rightFrontEncoder.getPosition();
+  }
+  public void ReadRightMiddleEncoder(){
+    rightMiddleEncoder.getPosition();
+  }
+  public void ReadRightBackEncoder(){
+    rightBackEncoder.getPosition();
   }
 
 }

@@ -47,7 +47,8 @@ public class RobotMap {
   //Intake
   public static int intake775;
   public static int intakeRollerSolenoid;
-  public static int intakePistonSolenoid1;
-  public static int intakePistonSolenoid2;
-  public static int intakeUltrasonic;
+  public static int intakeLeftPistonSolenoid;
+  public static int intakeRightPistonSolenoid;
+  public static int intakeUltrasonicPing;
+  public static int intakeUltrasonicEcho;
 }
