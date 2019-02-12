@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.utilities.PID;
+import frc.robot.utilities.DrivePID;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
@@ -39,20 +39,24 @@ public class Drive extends Subsystem {
   CANEncoder rightFrontEncoder = new CANEncoder(rightFront);
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
-  
+
+  DrivePID drivePID = new DrivePID(leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
+  rightFrontEncoder, rightMiddleEncoder, rightBackEncoder,
+  1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void SetLeftMotors(int speed){
+  public void setDriveLeft(double speed){
     leftFront.set(speed);
     leftMiddle.set(speed);
     leftBack.set(speed);
   }
 
-  public void SetRightMotors(int speed){
+  public void setDriveRight(double speed){
     rightFront.set(speed);
     rightMiddle.set(speed);
     rightBack.set(speed);
@@ -75,6 +79,11 @@ public class Drive extends Subsystem {
   }
   public void ReadRightBackEncoder(){
     rightBackEncoder.getPosition();
+  }
+  void setDriveMotorsPID(){
+    drivePID.updateMotorValues();
+    setDriveLeft(drivePID.getLeftMotorValue());
+    setDriveRight(drivePID.getRightMotorValue());
   }
 
 }

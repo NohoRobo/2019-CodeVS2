@@ -25,7 +25,7 @@ public class PID {
     boolean enabled;
     Timer timer;
 	
-    PID(double kP, double kI, double kD, double acceptableRange, 
+    public PID(double kP, double kI, double kD, double acceptableRange, 
         double maxErrorI, boolean reverseSensor){
         this.kP = kP;
         this.kI = kI;

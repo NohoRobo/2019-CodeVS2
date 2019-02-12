@@ -34,7 +34,7 @@ public class DrivePID{
     CANEncoder encoderRightMiddle;
     CANEncoder encoderRightBack;
 
-    DrivePID(CANEncoder encoderLeftFront, CANEncoder encoderLeftMiddle, CANEncoder encoderLeftBack,
+    public DrivePID(CANEncoder encoderLeftFront, CANEncoder encoderLeftMiddle, CANEncoder encoderLeftBack,
     CANEncoder encoderRightFront, CANEncoder encoderRightMiddle, CANEncoder encoderRightBack,
     Double kPDistance, Double kIDistance, Double kDDistance, Double acceptableRangeDistance, Double maxErrorIDistance,
     Double kPAngle, Double kIAngle, Double kDAngle, Double acceptableRangeAngle, Double maxErrorIAngle){
@@ -66,7 +66,7 @@ public class DrivePID{
         getGoodEncoderValue(encoderRightFront.getPosition(), encoderRightMiddle.getPosition(), encoderRightBack.getPosition()))/2.0;
     }
 
-    public void getMotorValues(){
+    public void updateMotorValues(){
         motorValueDistance = drivePIDDistance.calculatePIDValue(getDistance());
         motorValueAngle = drivePIDAngle.calculatePIDValue(getAngle());
         leftMotorValue = motorValueDistance + motorValueAngle;
