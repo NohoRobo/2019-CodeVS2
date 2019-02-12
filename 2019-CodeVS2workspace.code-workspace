@@ -1,10 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "nohorobo2019code"
+			"path": "."
 		}
-	],
-	"settings": {
-		"java.dependency.packagePresentation": "flat"
-	}
+	]
 }
