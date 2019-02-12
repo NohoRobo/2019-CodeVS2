@@ -1,6 +1,4 @@
 package frc.robot.utilities;
-
-import com.revrobotics.CANEncoder;
 import edu.wpi.first.wpilibj.Timer;
 
 public class PID {
@@ -11,7 +9,6 @@ public class PID {
 	double kD;
 	double acceptableRange;
 	double maxErrorI;
-	CANEncoder encoder;
 	boolean reverseSensor;
 	double error;
 	double desiredValue;
@@ -21,7 +18,6 @@ public class PID {
 	double dAverage;
 	int[] oldErrorArr;
 	int[] oldDerivatives;
-	int oldTime;
 	double oldSensorValue;
 	double timeChange;
 	int writeCounterI;
@@ -30,41 +26,37 @@ public class PID {
     Timer timer;
 	
     PID(double kP, double kI, double kD, double acceptableRange, 
-        double maxErrorI, CANEncoder encoder, boolean reverseSensor){
+        double maxErrorI, boolean reverseSensor){
         this.kP = kP;
         this.kI = kI;
         this.kD = kD;
         this.acceptableRange = acceptableRange;
         this.maxErrorI = maxErrorI;
-        this.encoder = encoder;
         this.reverseSensor = reverseSensor;
         this.error = 0;
-        this.desiredValue =	encoder.getPosition();
+        this.desiredValue = 0;
         this.pVal = 0;
         this.iVal = 0;
         this.dVal = 0;
         this.dAverage = 0;
         this.writeCounterI = 0;
-        this.oldTime = 0;
         this.oldSensorValue = 0;
         this.timeChange = 0;
         this.writeCounterD = 0;
         oldErrorArr = new int[OLD_ERROR_ARR_LENGTH];
         oldDerivatives = new int[OLD_DERIVATIVES_LENGTH];
         timer = new Timer();
-        timer.start(0);
+        timer.reset();
+        timer.start();
     }
-
-    /*PID(double kP, double kI, double kD, double acceptableRange, double maxErrorI, CANEncoder encoder){
-        PID(kP, kI, kD, acceptableRange, maxErrorI, encoder, false);
-    }*/
 
     //returns motorValue for given PID loop struct
     double calculatePIDValue(double manualSensorValue){
         if(this.enabled){
             //calculate delta time since last call
-            this.timeChange = nSysTime-this.oldTime;
-            this.oldTime = nSysTime;
+            this.timeChange = timer.get();
+            timer.reset();
+            timer.start();
             if(this.timeChange>100||this.timeChange == 0){
                 this.timeChange = 50;
             }
@@ -97,17 +89,17 @@ public class PID {
 
             //increment writeCounterD in circular array
             this.writeCounterD++;
-            this.writeCounterD %= (this.oldDerivatives.length/this.oldDerivatives[0].length);
+            this.writeCounterD %= this.oldDerivatives.length;
 
             //set I to 0 if within acceptable range
             if(Math.abs(this.error)<this.acceptableRange){
-                resetArray(this.oldErrorArr);
+                this.oldErrorArr = new int[OLD_ERROR_ARR_LENGTH];
                 this.iVal = 0;
             }
 
             //set old error in circular array
             this.writeCounterI++;
-            this.writeCounterI %= (this.oldErrorArr.length/this.oldErrorArr[0].length);
+            this.writeCounterI %= this.oldErrorArr.length;
 
             //return motor Value
             return this.pVal*this.kP +
@@ -115,9 +107,9 @@ public class PID {
             this.dAverage*this.kD/this.oldDerivatives.length/this.oldDerivatives[0]/(double)this.timeChange;
         }
         else{
-            resetArray(this.oldErrorArr);
+            this.oldErrorArr = new int[OLD_ERROR_ARR_LENGTH];
             this.iVal = 0;
-            resetArray(this.oldDerivatives);
+            this.oldDerivatives = new int[OLD_DERIVATIVES_LENGTH];
             this.dVal = 0;
             return 0;
         }
@@ -131,9 +123,5 @@ public class PID {
             return ceiling;
         }
         return value;
-    }
-
-    double calculatePIDValue(){
-        return calculatePIDValue(this.encoder.getPosition());
     }
 }

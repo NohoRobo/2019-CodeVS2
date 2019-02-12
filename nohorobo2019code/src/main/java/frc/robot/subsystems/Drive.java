@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.utilities.PID;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
@@ -38,8 +39,6 @@ public class Drive extends Subsystem {
   CANEncoder rightFrontEncoder = new CANEncoder(rightFront);
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
-  
-
   
   @Override
   public void initDefaultCommand() {
