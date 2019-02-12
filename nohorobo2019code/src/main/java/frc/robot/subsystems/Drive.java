@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.*;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.utilities.DrivePID;
@@ -65,25 +63,46 @@ public class Drive extends Subsystem {
   public void ReadLeftFrontEncoder(){
     leftFrontEncoder.getPosition();
   }
+
   public void ReadLeftMiddleEncoder(){
     leftMiddleEncoder.getPosition();
   }
+
   public void ReadLeftBackEncoder(){
     leftBackEncoder.getPosition();
   }
+
   public void ReadRightFrontEncoder(){
     rightFrontEncoder.getPosition();
   }
+
   public void ReadRightMiddleEncoder(){
     rightMiddleEncoder.getPosition();
   }
+
   public void ReadRightBackEncoder(){
     rightBackEncoder.getPosition();
   }
-  void setDriveMotorsPID(){
+
+  public void setDriveMotorsPID(){
     drivePID.updateMotorValues();
     setDriveLeft(drivePID.getLeftMotorValue());
     setDriveRight(drivePID.getRightMotorValue());
   }
 
+  public void setDesiredDriveDistance(double value){
+    drivePID.setDriveDesiredDistance(value);
+  }
+
+  public void setDesiredDriveAngle(double value){
+    drivePID.setDriveDesiredAngle(value);
+  }
+
+  public double getDesiredDriveDistance(double value){
+    return drivePID.getDriveDesiredDistance();
+  }
+
+  public double getDesiredDriveAngle(double value){
+    return drivePID.getDriveDesiredAngle();
+  }
 }

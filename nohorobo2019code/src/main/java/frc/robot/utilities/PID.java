@@ -115,6 +115,14 @@ public class PID {
         }
     }
 
+    public void setDesiredValue(double value){
+        this.desiredValue = value;
+    }
+
+    public double getDesiredValue(){
+        return this.desiredValue;
+    }
+
     double limit(double value, double floor, double ceiling){
         if(value<=floor){
             return floor;
@@ -124,4 +132,6 @@ public class PID {
         }
         return value;
     }
+
+	
 }
