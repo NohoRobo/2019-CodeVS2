@@ -8,11 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class TurnJoystick extends Command {
-  public TurnJoystick() {
-    requires(Robot.drive);
+public class DriveReverseDirectionJoystick extends Command {
+  public DriveReverseDirectionJoystick() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
