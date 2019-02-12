@@ -66,6 +66,22 @@ public class DrivePID{
         getGoodEncoderValue(encoderRightFront.getPosition(), encoderRightMiddle.getPosition(), encoderRightBack.getPosition()))/2.0;
     }
 
+    public void setDriveDesiredDistance(double value){
+        drivePIDDistance.setDesiredValue(value);
+    }
+
+    public void setDriveDesiredAngle(double value){
+        drivePIDAngle.setDesiredValue(value);
+    }
+
+    public double getDriveDesiredDistance(){
+        return drivePIDDistance.getDesiredValue();
+    }
+    
+    public double getDriveDesiredAngle(){
+        return drivePIDAngle.getDesiredValue();
+    }
+
     public void updateMotorValues(){
         motorValueDistance = drivePIDDistance.calculatePIDValue(getDistance());
         motorValueAngle = drivePIDAngle.calculatePIDValue(getAngle());
