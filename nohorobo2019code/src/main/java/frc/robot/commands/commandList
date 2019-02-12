@@ -2,9 +2,7 @@ DriveForwardPID
 SetLeftDrivePID
 SetRightDrivePID
 DriveAnglePID
-LiftUp
-LiftDown
-ArmMoveLeft
-ArmMoveRight
+LiftSetPosition(with PID)
+ArmMove
 DriveForwardTeleOp
 DriveAngleTeleOp
