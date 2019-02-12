@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.LiftUp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,8 +29,11 @@ public class OI {
 			button7 = new JoystickButton(leftJoy, 7),
       button8 = new JoystickButton(leftJoy, 8);
 
-
-      button1.whenPressed(new SetRollerMotors(1));
+      
+LiftUp testing = new LiftUp();
+public OI() {
+      button1.whenPressed(new LiftUp());
+}
       
   
   
