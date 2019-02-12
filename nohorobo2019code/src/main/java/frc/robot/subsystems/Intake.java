@@ -42,5 +42,31 @@ public class Intake extends Subsystem {
   public void RollerSolenoidStatus(){
     RollerSolenoid.get();
   }
-
+  public void ExtendLeftPanelSolenoid(){
+    LeftPanelSolenoid.set(true);
+  }
+  public void RetractLeftPanelSolenoid(){
+    LeftPanelSolenoid.set(false);
+  }
+  public void LeftPanelSolenoidStatus(){
+    LeftPanelSolenoid.get();
+  }
+  public void ExtendRightPanelSolenoid(){
+    RightPanelSolenoid.set(true);
+  }
+  public void RetractRightPanelSolenoid(){
+    RightPanelSolenoid.set(false);
+  }
+  public void RightPanelSolenoidStatus(){
+    RightPanelSolenoid.get();
+  }
+  public void UltrasonicRange(){
+    UltrasonicSensor.getRangeInches();
+  }
+  public void EnableUltrasonic(){
+    UltrasonicSensor.setEnabled(true);
+  }
+  public void DisableUltrasonic(){
+    UltrasonicSensor.setEnabled(false);
+  }
 }

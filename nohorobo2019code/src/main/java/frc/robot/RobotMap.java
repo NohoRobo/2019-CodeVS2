@@ -38,11 +38,13 @@ public class RobotMap {
   public static int sparkMaxRightBack;
 
   //Lift
-  public static int liftEncoder;
+  public static int liftEncoderA;
+  public static int liftEncoderB;
   public static int lift7751;
   public static int lift7752;
   //Arm
-  public static int swingArmEncoder;
+  public static int swingArmEncoderA;
+  public static int swingArmEncoderB;
   public static int swingArm775;
   //Intake
   public static int intake775;
