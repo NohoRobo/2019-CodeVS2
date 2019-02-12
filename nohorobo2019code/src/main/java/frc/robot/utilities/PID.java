@@ -51,7 +51,7 @@ public class PID {
     }
 
     //returns motorValue for given PID loop struct
-    double calculatePIDValue(double manualSensorValue){
+    double calculatePIDValue(double sensorValue){
         if(this.enabled){
             //calculate delta time since last call
             this.timeChange = timer.get();
@@ -61,7 +61,7 @@ public class PID {
                 this.timeChange = 50;
             }
             //calculate error
-            this.error = this.desiredValue-(this.reverseSensor?-1:1)*manualSensorValue;
+            this.error = this.desiredValue-(this.reverseSensor?-1:1)*sensorValue;
             //set P value
             this.pVal = this.error;
 
@@ -75,7 +75,7 @@ public class PID {
             }
 
             //calculate derivative
-            this.dVal = this.oldSensorValue-(this.reverseSensor?-1:1)*manualSensorValue;
+            this.dVal = this.oldSensorValue-(this.reverseSensor?-1:1)*sensorValue;
             //avoid stupid errors when changing setpoint
             if(Math.abs(this.dVal)>1000){
                 this.dVal = 0;
@@ -85,7 +85,7 @@ public class PID {
             this.oldDerivatives[this.writeCounterD] = (int) this.dVal;
 
             //set oldSensorValue
-            this.oldSensorValue = (this.reverseSensor?-1:1)*manualSensorValue;
+            this.oldSensorValue = (this.reverseSensor?-1:1)*sensorValue;
 
             //increment writeCounterD in circular array
             this.writeCounterD++;
@@ -113,6 +113,22 @@ public class PID {
             this.dVal = 0;
             return 0;
         }
+    }
+
+    public boolean isFinished(double velocity){
+        if(Math.abs(error)<this.acceptableRange && checkVelocityThreshold(0.1)){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkVelocityThreshold(double threshold){
+        for(int i : oldDerivatives){
+            if (Math.abs(oldDerivatives[i])>threshold){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void setDesiredValue(double value){

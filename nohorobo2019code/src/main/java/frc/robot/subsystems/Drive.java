@@ -98,11 +98,11 @@ public class Drive extends Subsystem {
     drivePID.setDriveDesiredAngle(value);
   }
 
-  public double getDesiredDriveDistance(double value){
+  public double getDesiredDriveDistance(){
     return drivePID.getDriveDesiredDistance();
   }
 
-  public double getDesiredDriveAngle(double value){
+  public double getDesiredDriveAngle(){
     return drivePID.getDriveDesiredAngle();
   }
 }

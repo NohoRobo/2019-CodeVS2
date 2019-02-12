@@ -4,15 +4,19 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class DriveForwardPID extends Command {
+
+    double distance;
+
     public DriveForwardPID(double distance) {
     // Use requires() here to declare subsystem dependencies
         requires(Robot.drive);
+        this.distance = distance;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.drive.setDesiredValueDistance(Robot.drive.getDesiredValueDistance() + value);
+    	Robot.drive.setDesiredDriveDistance(Robot.drive.getDesiredDriveDistance() + distance);
     }
 
     // Called repeatedly when this Command is scheduled to run
