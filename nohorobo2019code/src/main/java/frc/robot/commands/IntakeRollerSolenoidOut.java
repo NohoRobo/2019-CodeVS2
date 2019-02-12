@@ -8,11 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class ArmMove extends Command {
-  public ArmMove(){
-    requires(Robot.arm);
+public class IntakeRollerSolenoidOut extends Command {
+  public IntakeRollerSolenoidOut() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
