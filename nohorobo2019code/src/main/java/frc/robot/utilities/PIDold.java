@@ -1,7 +1,7 @@
 package frc.robot.utilities;
 import edu.wpi.first.wpilibj.Timer;
 
-public class PID {
+public class PIDold {
     private static final int OLD_ERROR_ARR_LENGTH = 100;
     private static final int OLD_DERIVATIVES_LENGTH = 3;
 	double kP;
@@ -25,7 +25,7 @@ public class PID {
     boolean enabled;
     Timer timer;
 	
-    public PID(double kP, double kI, double kD, double acceptableRange, 
+    public PIDold(double kP, double kI, double kD, double acceptableRange, 
         double maxErrorI, boolean reverseSensor){
         this.kP = kP;
         this.kI = kI;
