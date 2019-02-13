@@ -85,6 +85,7 @@ public OI() {
   }*/
 
    new DriveJoystick(Drive.driveSpeed*getDriverRightTrigger());
+   new DriveJoystick(-1*Drive.driveSpeed*getDriverLeftTrigger());
 
 
 
