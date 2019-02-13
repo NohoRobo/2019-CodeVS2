@@ -26,15 +26,15 @@ public class IntakePanelSolenoidOut extends Command {
   protected void execute() {
     Robot.intake.ExtendLeftPanelSolenoid();
     Robot.intake.ExtendRightPanelSolenoid();
-    Robot.intake.RetractLeftPanelSolenoid();
-    Robot.intake.RetractRightPanelSolenoid();
+    /*Robot.intake.RetractLeftPanelSolenoid();
+    Robot.intake.RetractRightPanelSolenoid();*/
   }
 
-  
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
