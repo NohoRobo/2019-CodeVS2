@@ -10,7 +10,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.DecreaseDriveSpeedJoystick;
+import frc.robot.commands.DriveJoystick;
+import frc.robot.commands.IncreaseDriveSpeedJoystick;
 import frc.robot.commands.IntakeRollerWheelSpinning;
+import frc.robot.subsystems.Drive;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,11 +41,7 @@ public class OI {
 	Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
 	Button driverButtonRightBumper = new JoystickButton(driverController, 6);
 
-public OI() {
 
-driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
-driverButtonA.whenPressed(new IntakeRollerWheelSpinning(1));
-}
 public double getDriverRightY() {
   return -driverController.getRawAxis(RIGHT_VERT_AXIS);
 }
@@ -66,6 +66,36 @@ public double getDriverRightTrigger() {
   return driverController.getRawAxis(RIGHT_Z_AXIS);
 }
 
+
+public OI() {
+
+  driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
+  driverButtonA.whenPressed(new IntakeRollerWheelSpinning(1));
+
+  driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
+  driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
+
+  
+  //double drivespeed = 1;
+//  driverButtonA.whenPressed(driverspeed += 1);
+
+  /*if (driverButtonLeftBumper.
+ 
+
+  }*/
+
+   new DriveJoystick(Drive.driveSpeed*getDriverRightTrigger());
+
+
+
+   
+//Robot.subystems.Drive.driveSpeed = 2;
+  
+  
+  
+  
+  
+  }
 
 
 

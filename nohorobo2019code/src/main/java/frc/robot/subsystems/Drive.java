@@ -40,6 +40,9 @@ public class Drive extends Subsystem implements PIDSubSystem {
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
 
+
+  public static double driveSpeed = 1;
+
   public PID pidDriveStraight = new PIDDriveStraight(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false,
   leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
   rightFrontEncoder, rightMiddleEncoder, rightBackEncoder);
@@ -90,4 +93,27 @@ public class Drive extends Subsystem implements PIDSubSystem {
     this.pidDriveStraight.disable();
     this.pidDriveTurning.disable();
   }
+
+  public void increaseMaxSpeed(){
+    driveSpeed += 0.25;
+    if (driveSpeed >= 1){
+      driveSpeed = 1;
+    }
+    //return driveSpeed;
+  }
+
+  public void decreaseMaxSpeed(){
+    driveSpeed -= 0.25;
+    if (driveSpeed <= 0){
+      driveSpeed = 0;
+    }
+    //return driveSpeed;
+  }
+
+  /*public double setMaxSpeed(double toSet){
+    driveSpeed = (toSet > 1) ? +.25 : -.25;
+    driveSpeed = (driveSpeed >1) ? 1 : driveSpeed));
+
+    return driveSpeed;
+  }*/
 }

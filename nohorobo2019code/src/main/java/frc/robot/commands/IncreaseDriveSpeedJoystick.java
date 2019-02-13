@@ -10,10 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class DriveJoystick extends Command {
-  double speed;
-  public DriveJoystick(double speed) {
-    this.speed = speed;
+public class IncreaseDriveSpeedJoystick extends Command {
+  public IncreaseDriveSpeedJoystick() {
+
     requires(Robot.drive);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -28,9 +27,8 @@ public class DriveJoystick extends Command {
   @Override
   protected void execute() {
 
-    Robot.drive.setDriveStraight(this.speed);
-
-
+    Robot.drive.increaseMaxSpeed();
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
