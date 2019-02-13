@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -16,6 +17,8 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class Arm extends Subsystem {
+
+  VictorSP Arm = new VictorSP(RobotMap.swingArm775);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   Talon ArmTalon = new Talon(RobotMap.swingArm775);
@@ -23,8 +26,15 @@ public class Arm extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+
+    
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+
+  public void SetArmMotors(double speed){
+    Arm.set(speed);
   }
   
 
