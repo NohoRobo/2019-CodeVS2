@@ -9,9 +9,31 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.Intake;
+
+
+
+/*void bith (int speed, int direction){
+  movemotor(speed*direction);
+}
+
+
+
+
+button1.whenpressed(bith(1, -1));
+button2.whenpressed(bith(1, 1));*/
+
+
+
+
+
 
 public class IntakeRollerWheelSpinning extends Command {
-  public IntakeRollerWheelSpinning() {
+  //public float rollerSpeed = 0;
+  double speed;
+  public IntakeRollerWheelSpinning(double speed) {
+    super("IntakeRollerWheelSpinning");
+    this.speed = speed;
     requires(Robot.intake);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -25,6 +47,19 @@ public class IntakeRollerWheelSpinning extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
+
+
+    // solenoid in and button pressed
+    
+    Robot.intake.SetRollerMotors(this.speed);
+    
+
+
+    //button1.whenpressed(intakewheelspinning(1);
+    //button2.whenpressed(intakewheelspinning(-1);
+    //intake.SetRollerMotors();
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

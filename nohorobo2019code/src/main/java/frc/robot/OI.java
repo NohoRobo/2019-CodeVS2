@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.IntakeRollerWheelSpinning;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,7 +39,8 @@ public class OI {
 
 public OI() {
 
-
+driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
+driverButtonA.whenPressed(new IntakeRollerWheelSpinning(1));
 }
 public double getDriverRightY() {
   return -driverController.getRawAxis(RIGHT_VERT_AXIS);
@@ -62,9 +64,18 @@ public double getDriverLeftTrigger() {
 
 public double getDriverRightTrigger() {
   return driverController.getRawAxis(RIGHT_Z_AXIS);
-}      
-  
-  
+}
+
+
+
+
+
+
+
+
+
+
+
 	
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
