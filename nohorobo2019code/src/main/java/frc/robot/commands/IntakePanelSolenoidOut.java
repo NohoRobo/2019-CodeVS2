@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class IntakePanelSolenoidOut extends Command {
   public IntakePanelSolenoidOut() {
@@ -23,10 +24,13 @@ public class IntakePanelSolenoidOut extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    
+    Robot.intake.ExtendLeftPanelSolenoid();
+    Robot.intake.ExtendRightPanelSolenoid();
+    Robot.intake.RetractLeftPanelSolenoid();
+    Robot.intake.RetractRightPanelSolenoid();
   }
 
+  
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
