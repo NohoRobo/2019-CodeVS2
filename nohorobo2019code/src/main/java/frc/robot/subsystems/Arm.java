@@ -7,6 +7,9 @@
 
 package frc.robot.subsystems;
 
+
+import frc.robot.utilities.PIDSubSystem;
+
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -16,7 +19,7 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class Arm extends Subsystem {
+public class Arm extends Subsystem implements PIDSubSystem {
 
   VictorSP Arm = new VictorSP(RobotMap.swingArm775);
   // Put methods for controlling this subsystem

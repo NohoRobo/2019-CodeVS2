@@ -10,19 +10,18 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.utilities.DrivePID;
+import frc.robot.utilities.PIDSubSystem;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.*;
-
-
 
 /**
  * Add your docs here.
  * 
  * 
  */
-public class Drive extends Subsystem {
+public class Drive extends Subsystem implements PIDSubSystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   CANSparkMax leftFront = new CANSparkMax(RobotMap.neoLeftFront, MotorType.kBrushless);
