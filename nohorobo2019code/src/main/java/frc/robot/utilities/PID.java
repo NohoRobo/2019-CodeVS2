@@ -77,7 +77,7 @@ public abstract class PID {
         }
     }
 
-    public boolean isFinished(double velocity){
+    public boolean isFinished(){
         if(Math.abs(error)<acceptableVelocity && Math.abs(getSensorVelocity())<acceptableVelocity){
             return true;
         }
@@ -89,7 +89,7 @@ public abstract class PID {
     public double getDesiredValue(){return this.desiredValue;}
 
     public void enable(){enabled = true;}
-    public void diable(){enabled = false;}
+    public void disable(){enabled = false;}
 
     private double limit(double value, double floor, double ceiling){
         if(value<=floor)return floor;

@@ -9,8 +9,11 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.utilities.DrivePID;
+
 import frc.robot.utilities.PIDSubSystem;
+import frc.robot.utilities.PID;
+import frc.robot.utilities.PIDDriveTurning;
+import frc.robot.utilities.PIDDriveStraight;
 
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
@@ -37,9 +40,13 @@ public class Drive extends Subsystem implements PIDSubSystem {
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
 
-  DrivePID drivePID = new DrivePID(leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
-  rightFrontEncoder, rightMiddleEncoder, rightBackEncoder,
-  1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+  public PID pidDriveStraight = new PIDDriveStraight(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false,
+  leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
+  rightFrontEncoder, rightMiddleEncoder, rightBackEncoder);
+
+  public PID pidDriveTurning = new PIDDriveTurning(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false,
+  leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
+  rightFrontEncoder, rightMiddleEncoder, rightBackEncoder);
 
   @Override
   public void initDefaultCommand() {
@@ -48,60 +55,39 @@ public class Drive extends Subsystem implements PIDSubSystem {
   }
 
   public void setDriveLeft(double speed){
-    leftFront.set(speed);
-    leftMiddle.set(speed);
-    leftBack.set(speed);
+    this.leftFront.set(speed);
+    this.leftMiddle.set(speed);
+    this.leftBack.set(speed);
   }
 
   public void setDriveRight(double speed){
-    rightFront.set(speed);
-    rightMiddle.set(speed);
-    rightBack.set(speed);
+    this.rightFront.set(speed);
+    this.rightMiddle.set(speed);
+    this.rightBack.set(speed);
+  }
+
+  public void setDriveStraight(double speed){
+    this.setDriveLeft(speed);
+    this.setDriveRight(speed);
+  }
+
+  public void setDriveTurning(double speed){
+    this.setDriveLeft(speed);
+    this.setDriveRight(-speed);
   }
   
-  public void ReadLeftFrontEncoder(){
-    leftFrontEncoder.getPosition();
-  }
-
-  public void ReadLeftMiddleEncoder(){
-    leftMiddleEncoder.getPosition();
-  }
-
-  public void ReadLeftBackEncoder(){
-    leftBackEncoder.getPosition();
-  }
-
-  public void ReadRightFrontEncoder(){
-    rightFrontEncoder.getPosition();
-  }
-
-  public void ReadRightMiddleEncoder(){
-    rightMiddleEncoder.getPosition();
-  }
-
-  public void ReadRightBackEncoder(){
-    rightBackEncoder.getPosition();
-  }
-
   public void setDriveMotorsPID(){
-    drivePID.updateMotorValues();
-    setDriveLeft(drivePID.getLeftMotorValue());
-    setDriveRight(drivePID.getRightMotorValue());
+    this.setDriveStraight(this.pidDriveStraight.getMotorPower());
+    this.setDriveTurning(this.pidDriveTurning.getMotorPower());
   }
 
-  public void setDesiredDriveDistance(double value){
-    drivePID.setDriveDesiredDistance(value);
+  public void enablePID(){
+    this.pidDriveStraight.enable();
+    this.pidDriveTurning.enable();
   }
 
-  public void setDesiredDriveAngle(double value){
-    drivePID.setDriveDesiredAngle(value);
-  }
-
-  public double getDesiredDriveDistance(){
-    return drivePID.getDriveDesiredDistance();
-  }
-
-  public double getDesiredDriveAngle(){
-    return drivePID.getDriveDesiredAngle();
+  public void disablePID(){
+    this.pidDriveStraight.disable();
+    this.pidDriveTurning.disable();
   }
 }

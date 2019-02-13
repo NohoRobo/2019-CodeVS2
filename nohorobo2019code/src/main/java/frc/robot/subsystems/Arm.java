@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 
 import frc.robot.utilities.PIDSubSystem;
+import frc.robot.utilities.PID;
+import frc.robot.utilities.PIDArm;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,19 +29,14 @@ public class Arm extends Subsystem implements PIDSubSystem {
   Talon ArmTalon = new Talon(RobotMap.swingArm775);
   Encoder ArmEncoder = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
 
+  PID pid = new PIDArm(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, ArmEncoder);
+
   @Override
   public void initDefaultCommand() {
-
-    
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    this.setMotorSpeed(0);
   }
 
-
-  public void SetArmMotors(double speed){
+  public void setMotorSpeed(double speed){
     Arm.set(speed);
   }
-  
-
-
 }
