@@ -16,7 +16,8 @@ public class DriveForwardPID extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-    	Robot.drive.setDesiredDriveDistance(Robot.drive.getDesiredDriveDistance() + distance);
+        Robot.drive.enablePID();
+    	Robot.drive.pidDriveStraight.incrementDesiredValue(distance);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,7 +29,7 @@ public class DriveForwardPID extends Command {
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+        return Robot.drive.pidDriveStraight.isFinished();
     }
 
     // Called once after isFinished returns true
