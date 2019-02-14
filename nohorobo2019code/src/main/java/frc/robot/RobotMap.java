@@ -24,33 +24,33 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   //Drive
-  public static int neoLeftFront;
+  /*public static int neoLeftFront;
   public static int neoLeftMiddle;
   public static int neoLeftBack;
   public static int neoRightFront;
   public static int neoRightMiddle;
-  public static int neoRightBack;
-  public static int sparkMaxLeftFront;
-  public static int sparkMaxLeftMiddle;
-  public static int sparkMaxLeftBack;
-  public static int sparkMaxRightFront;
-  public static int sparkMaxRightMiddle;
-  public static int sparkMaxRightBack;
+  public static int neoRightBack;*/
+  public static int sparkMaxLeftFront = 5;
+  public static int sparkMaxLeftMiddle = 4;
+  public static int sparkMaxLeftBack = 3;
+  public static int sparkMaxRightFront = 0;
+  public static int sparkMaxRightMiddle = 1;
+  public static int sparkMaxRightBack = 2;
 
   //Lift
-  public static int liftEncoderA;
-  public static int liftEncoderB;
-  public static int lift7751;
-  public static int lift7752;
+  public static int liftEncoderA = 0;
+  public static int liftEncoderB = 1;
+  public static int lift7751 = 6;
+  public static int lift7752 = 7;
   //Arm
-  public static int swingArmEncoderA;
-  public static int swingArmEncoderB;
-  public static int swingArm775;
+  public static int swingArmEncoderA = 2;
+  public static int swingArmEncoderB = 3;
+  public static int swingArm775 = 8;
   //Intake
-  public static int intake775;
-  public static int intakeRollerSolenoid;
-  public static int intakeLeftPistonSolenoid;
-  public static int intakeRightPistonSolenoid;
-  public static int intakeUltrasonicPing;
-  public static int intakeUltrasonicEcho;
+  public static int intake775 = 9;
+  public static int intakeRollerSolenoid = 0;
+  public static int intakeLeftPistonSolenoid = 1;
+  public static int intakeRightPistonSolenoid = 2;
+  public static int intakeUltrasonicPing = 3;
+  public static int intakeUltrasonicEcho = 4;
 }

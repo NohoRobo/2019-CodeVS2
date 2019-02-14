@@ -75,6 +75,9 @@ public OI() {
   driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
   driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
 
+  /*driverButtonY.whileHeld(new DriveJoystick(0.1));
+  driverButtonY.whenReleased(new DriveJoystick(0));*/
+
   
   //double drivespeed = 1;
 //  driverButtonA.whenPressed(driverspeed += 1);
@@ -84,8 +87,11 @@ public OI() {
 
   }*/
 
-   new DriveJoystick(Drive.driveSpeed*getDriverRightTrigger());
-   new DriveJoystick(-1*Drive.driveSpeed*getDriverLeftTrigger());
+  driverButtonX.whenPressed(new DriveJoystick(-1));
+  driverButtonA.whenPressed(new DriveJoystick(1));
+
+    new DriveJoystick(/*Drive.driveSpeed*/getDriverRightTrigger());
+   new DriveJoystick(-1*/*Drive.driveSpeed*/getDriverLeftTrigger());
 
 
 

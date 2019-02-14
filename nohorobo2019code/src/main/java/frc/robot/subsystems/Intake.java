@@ -23,7 +23,7 @@ public class Intake extends Subsystem {
   Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
   Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
   Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
-  Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
+  //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
 
   @Override
   public void initDefaultCommand() {
@@ -60,7 +60,7 @@ public class Intake extends Subsystem {
   public void RightPanelSolenoidStatus(){
     RightPanelSolenoid.get();
   }
-  public void UltrasonicRange(){
+  /*public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
   }
   public void EnableUltrasonic(){
@@ -68,5 +68,5 @@ public class Intake extends Subsystem {
   }
   public void DisableUltrasonic(){
     UltrasonicSensor.setEnabled(false);
-  }
+  }*/
 }

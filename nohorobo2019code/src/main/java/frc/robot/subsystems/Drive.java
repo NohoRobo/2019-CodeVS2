@@ -27,12 +27,12 @@ import com.revrobotics.CANSparkMaxLowLevel.*;
 public class Drive extends Subsystem implements PIDSubSystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  CANSparkMax leftFront = new CANSparkMax(RobotMap.neoLeftFront, MotorType.kBrushless);
-  CANSparkMax leftMiddle = new CANSparkMax(RobotMap.neoLeftMiddle, MotorType.kBrushless);
-  CANSparkMax leftBack = new CANSparkMax(RobotMap.neoLeftBack, MotorType.kBrushless);
-  CANSparkMax rightFront = new CANSparkMax(RobotMap.neoRightFront, MotorType.kBrushless);
-  CANSparkMax rightMiddle = new CANSparkMax(RobotMap.neoRightMiddle, MotorType.kBrushless);
-  CANSparkMax rightBack = new CANSparkMax(RobotMap.neoRightBack, MotorType.kBrushless);
+  CANSparkMax leftFront = new CANSparkMax(RobotMap.sparkMaxLeftFront, MotorType.kBrushless);
+  CANSparkMax leftMiddle = new CANSparkMax(RobotMap.sparkMaxLeftMiddle, MotorType.kBrushless);
+  CANSparkMax leftBack = new CANSparkMax(RobotMap.sparkMaxLeftBack, MotorType.kBrushless);
+  CANSparkMax rightFront = new CANSparkMax(RobotMap.sparkMaxRightFront, MotorType.kBrushless);
+  CANSparkMax rightMiddle = new CANSparkMax(RobotMap.sparkMaxRightMiddle, MotorType.kBrushless);
+  CANSparkMax rightBack = new CANSparkMax(RobotMap.sparkMaxRightBack, MotorType.kBrushless);
   CANEncoder leftFrontEncoder = new CANEncoder(leftFront);
   CANEncoder leftMiddleEncoder = new CANEncoder(leftMiddle);
   CANEncoder leftBackEncoder = new CANEncoder(leftBack);
