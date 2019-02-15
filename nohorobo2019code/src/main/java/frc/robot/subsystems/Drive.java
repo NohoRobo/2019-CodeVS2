@@ -8,7 +8,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveJoystick;
 import frc.robot.utilities.PIDSubSystem;
@@ -54,7 +53,7 @@ public class Drive extends Subsystem implements PIDSubSystem {
 
   @Override
   public void initDefaultCommand() {
-    
+
     setDefaultCommand(new DriveJoystick(0));
 
     //setDefaultCommand(new DriveJoystick(-1*Robot.m_oi.getDriverLeftTrigger()));

@@ -22,9 +22,9 @@ public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   VictorSPX RollerMotor = new VictorSPX(RobotMap.intake775);
-  //Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
-  //Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
-  //Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
+  Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
+  Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
+  Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
   //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
 
   @Override
@@ -36,7 +36,7 @@ public class Intake extends Subsystem {
   public void SetRollerMotors(double speed){
     RollerMotor.set(ControlMode.PercentOutput, speed);
   }
-  /*
+  
   public void ExtendRollerSolenoid(){
     RollerSolenoid.set(true);
   }
@@ -64,7 +64,7 @@ public class Intake extends Subsystem {
   public void RightPanelSolenoidStatus(){
     RightPanelSolenoid.get();
   }
-  */
+  
   /*public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
   }

@@ -16,19 +16,17 @@ import edu.wpi.first.wpilibj.Encoder;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.OI;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.TestingSparkMaxControllers;
+
 
 
 /**
  * Add your docs here.
  */
 public class Lift extends Subsystem implements PIDSubSystem {
-  // Pu1t methods for controlling this subsystem
+  // Pu1t methods for controlling this subsystem 
   // here. Call these from Commands.
   TalonSRX liftTalon1 = new TalonSRX(RobotMap.liftRight775);
   TalonSRX liftTalon2 = new TalonSRX(RobotMap.liftLeft775);

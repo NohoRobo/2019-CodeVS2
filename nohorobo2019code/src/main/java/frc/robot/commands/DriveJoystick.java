@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.OI;
 
 public class DriveJoystick extends Command {
   double speed;
@@ -30,13 +29,21 @@ public class DriveJoystick extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //speed = Robot.m_oi.getDriverLeftY();
 
     //Robot.drive.setDriveStraight(this.speed);
 
+    if (Robot.m_oi.driverController.getRawAxis(3) > Robot.m_oi.driverController.getRawAxis(2)){
 
-    Robot.drive.setDriveStraight(Robot.m_oi.driverController.getRawAxis(3));
-    
+      Robot.drive.setDriveStraight(Robot.m_oi.driverController.getRawAxis(3));
+      
+
+    }
+    if (Robot.m_oi.driverController.getRawAxis(2) > Robot.m_oi.driverController.getRawAxis(3)){
+
+      Robot.drive.setDriveStraight(-1*Robot.m_oi.driverController.getRawAxis(2));
+      
+
+    }
 
 
 
