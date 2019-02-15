@@ -87,7 +87,8 @@ public double getDriverRightTrigger() {
 public OI() {
 
   driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
-  driverButtonA.whenPressed(new IntakeRollerWheelSpinning(1));
+  driverButtonX.whenReleased(new IntakeRollerWheelSpinning(1));
+  
 
   driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
   driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
