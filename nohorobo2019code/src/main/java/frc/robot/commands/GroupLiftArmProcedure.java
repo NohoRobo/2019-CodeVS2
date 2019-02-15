@@ -9,11 +9,11 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LiftArmProcedure extends CommandGroup {
+public class GroupLiftArmProcedure extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LiftArmProcedure() {
+  public GroupLiftArmProcedure() {
 
 
 
