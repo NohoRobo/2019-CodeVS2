@@ -35,26 +35,19 @@ public class DriveJoystick extends Command {
     if (Robot.m_oi.driverController.getRawAxis(3) > Robot.m_oi.driverController.getRawAxis(2)){
 
       Robot.drive.setDriveStraight(Robot.m_oi.driverController.getRawAxis(3));
-      
-
     }
     else if (Robot.m_oi.driverController.getRawAxis(2) > Robot.m_oi.driverController.getRawAxis(3)){
 
       Robot.drive.setDriveStraight(-1*Robot.m_oi.driverController.getRawAxis(2));
-      
-
     }
-
     else{
       Robot.drive.setDriveStraight(0);
     }
-
-
-    if ((Robot.m_oi.driverController.getRawAxis(3) < 0.03)&&(Robot.m_oi.driverController.getRawAxis(2) < 0.03)){
-
+    if ((Robot.m_oi.driverController.getRawAxis(3) < Robot.m_oi.STICK_DEADZONE)&&(Robot.m_oi.driverController.getRawAxis(2) < Robot.m_oi.STICK_DEADZONE)&&(Robot.m_oi.getDriverLeftX() == 0)){
       Robot.drive.setDriveStraight(0);
-      
     }
+    Robot.drive.setDriveTurning(Robot.m_oi.getDriverLeftX());
+    
 
 
 
