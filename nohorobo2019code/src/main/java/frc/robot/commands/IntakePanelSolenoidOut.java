@@ -24,8 +24,8 @@ public class IntakePanelSolenoidOut extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.ExtendLeftPanelSolenoid();
-    Robot.intake.ExtendRightPanelSolenoid();
+    //Robot.intake.ExtendLeftPanelSolenoid();
+    //Robot.intake.ExtendRightPanelSolenoid();
     /*Robot.intake.RetractLeftPanelSolenoid();
     Robot.intake.RetractRightPanelSolenoid();*/
   }

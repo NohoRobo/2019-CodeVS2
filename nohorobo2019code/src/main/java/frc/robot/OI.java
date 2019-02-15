@@ -10,11 +10,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DecreaseDriveSpeedJoystick;
 import frc.robot.commands.DriveJoystick;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
 import frc.robot.commands.IntakeRollerWheelSpinning;
+import frc.robot.commands.TestingSparkMaxControllers;
 import frc.robot.subsystems.Drive;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,26 +26,28 @@ import frc.robot.subsystems.Drive;
  */
 public class OI {
 
-  private static final int LEFT_HORIZ_AXIS = 0;
-	private static final int LEFT_VERT_AXIS = 1;
-	private static final int RIGHT_HORIZ_AXIS = 4;
-	private static final int RIGHT_VERT_AXIS = 5;
-	private static final int LEFT_Z_AXIS = 3;
-	private static final int RIGHT_Z_AXIS = 2;
+  public static final int LEFT_HORIZ_AXIS = 0;
+	public static final int LEFT_VERT_AXIS = 1;
+	public static final int RIGHT_HORIZ_AXIS = 4;
+	public static final int RIGHT_VERT_AXIS = 5;
+	public static final int LEFT_Z_AXIS = 3;
+	public static final int RIGHT_Z_AXIS = 2;
 
-	private static final double STICK_DEADZONE = 0.3;
-	private static final double STICK_MAX = 0.97;
+	public static final double STICK_DEADZONE = 0.3;
+	public static final double STICK_MAX = 0.97;
 
-  Joystick driverController = new Joystick(0);
+  public Joystick driverController = new Joystick(0);
 	Button driverButtonA = new JoystickButton(driverController, 1);
 	Button driverButtonB = new JoystickButton(driverController, 2);
 	Button driverButtonX = new JoystickButton(driverController, 3);
 	Button driverButtonY = new JoystickButton(driverController, 4);
 	Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
-	Button driverButtonRightBumper = new JoystickButton(driverController, 6);
+  Button driverButtonRightBumper = new JoystickButton(driverController, 6);
+  
+  
 
 
-public double getDriverRightY() {
+public  double getDriverRightY() {
   return -driverController.getRawAxis(RIGHT_VERT_AXIS);
 }
 
@@ -75,8 +80,11 @@ public OI() {
   driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
   driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
 
-  /*driverButtonY.whileHeld(new DriveJoystick(0.1));
-  driverButtonY.whenReleased(new DriveJoystick(0));*/
+  //driverButtonY.whileHeld(new DriveJoystick(getRawAxis(RIGHT_Z_AXIS));
+  //driverButtonY.whenPressed(new DriveJoystick(0));
+
+
+
 
   
   //double drivespeed = 1;
@@ -87,13 +95,35 @@ public OI() {
 
   }*/
 
-  driverButtonX.whenPressed(new DriveJoystick(-1));
-  driverButtonA.whenPressed(new DriveJoystick(1));
+  /*driverButtonX.whenPressed(new DriveJoystick(-0.3));
+  driverButtonA.whenPressed(new DriveJoystick(0.3));
 
-    new DriveJoystick(/*Drive.driveSpeed*/getDriverRightTrigger());
-   new DriveJoystick(-1*/*Drive.driveSpeed*/getDriverLeftTrigger());
+  driverButtonX.whenReleased(new DriveJoystick(0));
+  driverButtonA.whenReleased(new DriveJoystick(0));*/
 
 
+
+ /*if button = 1{
+   motor = 1
+ }
+
+ if button2 = 1{
+   motor = -1
+ }
+
+ if button2 = 0 && button = 0{
+   motor = 0
+ }*/
+
+    /*new DriveJoystick(Drive.driveSpeedgetDriverRightTrigger());
+   new DriveJoystick(-1*Drive.driveSpeedgetDriverLeftTrigger());
+
+   if (getDriverLeftY() >.05 || getDriverLeftY() < -.05){
+    driverButtonY.whileHeld(new DriveJoystick(0.1));
+    driverButtonY.whenReleased(new DriveJoystick(0));
+   }*/
+
+   
 
    
 //Robot.subystems.Drive.driveSpeed = 2;

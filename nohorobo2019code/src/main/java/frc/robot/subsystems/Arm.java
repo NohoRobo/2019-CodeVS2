@@ -23,13 +23,13 @@ import frc.robot.RobotMap;
  */
 public class Arm extends Subsystem implements PIDSubSystem {
 
-  VictorSP Arm = new VictorSP(RobotMap.swingArm775);
+  //VictorSP Arm = new VictorSP(RobotMap.swingArm775);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   //Talon ArmTalon = new Talon(RobotMap.swingArm775);
-  Encoder ArmEncoder1 = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
+  //Encoder ArmEncoder1 = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
 
-  PID pid = new PIDArm(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, ArmEncoder1);
+  //PID pid = new PIDArm(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, ArmEncoder1);
 
   @Override
   public void initDefaultCommand() {
@@ -37,6 +37,6 @@ public class Arm extends Subsystem implements PIDSubSystem {
   }
 
   public void setMotorSpeed(double speed){
-    Arm.set(speed);
+    //Arm.set(speed);
   }
 }

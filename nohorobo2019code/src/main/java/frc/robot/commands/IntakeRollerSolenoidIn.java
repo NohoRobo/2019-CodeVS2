@@ -25,7 +25,7 @@ public class IntakeRollerSolenoidIn extends Command {
   @Override
   protected void execute() {
 
-    Robot.intake.RetractRollerSolenoid();
+    //Robot.intake.RetractRollerSolenoid();
     
   }
 

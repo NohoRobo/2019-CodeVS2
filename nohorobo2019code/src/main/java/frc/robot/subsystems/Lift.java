@@ -12,24 +12,51 @@ import frc.robot.utilities.PID;
 import frc.robot.utilities.PIDLift;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Talon;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.OI;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.TestingSparkMaxControllers;
+
 
 /**
  * Add your docs here.
  */
 public class Lift extends Subsystem implements PIDSubSystem {
-  // Put methods for controlling this subsystem
+  // Pu1t methods for controlling this subsystem
   // here. Call these from Commands.
-  Talon liftTalon1 = new Talon(RobotMap.lift7751);
-  Talon liftTalon2 = new Talon(RobotMap.lift7752);
-  Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB);
+  TalonSRX liftTalon1 = new TalonSRX(RobotMap.liftRight775);
+  TalonSRX liftTalon2 = new TalonSRX(RobotMap.liftLeft775);
+  //Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB);
 
-  PID pidLift = new PIDLift(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, liftEncoder);
+  //PID pidLift = new PIDLift(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, liftEncoder);
   @Override
   public void initDefaultCommand() {
+
+
+    setDefaultCommand(new TestingSparkMaxControllers(0));
+
+
+    //setDefaultCommand(new TestingSparkMaxControllers(Robot.m_oi.getDriverLeftY()));
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+  /**
+ * @return the liftTalon1
+ */
+
+public void setTalon1Speed(double speed){
+    liftTalon1.set(ControlMode.PercentOutput, speed);
+  }
+public  void setTalon2Speed(double speed){
+  liftTalon2.set(ControlMode.PercentOutput, speed);
+} 
+
+
+
 }

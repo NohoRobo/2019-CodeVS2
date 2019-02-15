@@ -9,11 +9,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
 
 public class DriveJoystick extends Command {
   double speed;
   public DriveJoystick(double speed) {
+
     this.speed = speed;
+    
     requires(Robot.drive);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -27,8 +30,18 @@ public class DriveJoystick extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //speed = Robot.m_oi.getDriverLeftY();
 
-    Robot.drive.setDriveStraight(this.speed);
+    //Robot.drive.setDriveStraight(this.speed);
+
+
+    Robot.drive.setDriveStraight(Robot.m_oi.driverController.getRawAxis(3));
+    
+
+
+
+
+
 
 
   }

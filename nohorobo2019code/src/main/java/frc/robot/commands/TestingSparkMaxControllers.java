@@ -8,11 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.subsystems.Lift;
+
+
+
 
 public class TestingSparkMaxControllers extends Command {
-  public TestingSparkMaxControllers() {
+  double speed;
+
+  public TestingSparkMaxControllers(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    this.speed = speed;
+    requires(Robot.lift);
+    
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +34,9 @@ public class TestingSparkMaxControllers extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //Robot.lift.setTalon1Speed(Robot.m_oi.driverController.getRawAxis(1));
+    //Robot.lift.setTalon2Speed(Robot.m_oi.driverController.getRawAxis(1));
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
