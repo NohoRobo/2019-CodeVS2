@@ -13,7 +13,11 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Timer;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.commands.GroupLiftArmProcedure;
+import frc.robot.commands.IntakeCheckForBall;
 
 /**
  * Add your docs here.
@@ -25,10 +29,16 @@ public class Intake extends Subsystem {
   Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
   Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
   Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
-  //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
+  Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
+
+  public final double BALL_RANGE = 2;
 
   @Override
   public void initDefaultCommand() {
+
+    
+
+    setDefaultCommand(new IntakeCheckForBall());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
@@ -43,8 +53,8 @@ public class Intake extends Subsystem {
   public void RetractRollerSolenoid(){
     RollerSolenoid.set(false);
   }
-  public void RollerSolenoidStatus(){
-    RollerSolenoid.get();
+  public boolean RollerSolenoidStatus(){
+    return RollerSolenoid.get();
   }
   public void ExtendLeftPanelSolenoid(){
     LeftPanelSolenoid.set(true);
@@ -52,8 +62,8 @@ public class Intake extends Subsystem {
   public void RetractLeftPanelSolenoid(){
     LeftPanelSolenoid.set(false);
   }
-  public void LeftPanelSolenoidStatus(){
-    LeftPanelSolenoid.get();
+  public boolean LeftPanelSolenoidStatus(){
+    return LeftPanelSolenoid.get();
   }
   public void ExtendRightPanelSolenoid(){
     RightPanelSolenoid.set(true);
@@ -61,11 +71,11 @@ public class Intake extends Subsystem {
   public void RetractRightPanelSolenoid(){
     RightPanelSolenoid.set(false);
   }
-  public void RightPanelSolenoidStatus(){
-    RightPanelSolenoid.get();
+  public boolean RightPanelSolenoidStatus(){
+    return RightPanelSolenoid.get();
   }
   
-  /*public void UltrasonicRange(){
+  public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
   }
   public void EnableUltrasonic(){
@@ -73,5 +83,8 @@ public class Intake extends Subsystem {
   }
   public void DisableUltrasonic(){
     UltrasonicSensor.setEnabled(false);
-  }*/
+  }
+  public boolean BallHeld(){
+    return UltrasonicSensor.getRangeInches() < BALL_RANGE;
+  }
 }

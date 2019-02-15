@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DecreaseDriveSpeedJoystick;
+import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
 import frc.robot.commands.IntakeRollerWheelSpinning;
 import frc.robot.commands.TestingSparkMaxControllers;
@@ -41,7 +42,21 @@ public class OI {
 	Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
   Button driverButtonRightBumper = new JoystickButton(driverController, 6);
   
-  
+  public Joystick operatorController = new Joystick(1);
+  Button Left3 = new JoystickButton(operatorController, 1);
+  Button Left2 = new JoystickButton(operatorController, 2);
+  Button Left1 = new JoystickButton(operatorController, 3);
+  Button LeftShip = new JoystickButton(operatorController, 4);
+  Button LeftGround = new JoystickButton(operatorController, 5);
+  Button Center3 = new JoystickButton(operatorController, 6);
+  Button Center2 = new JoystickButton(operatorController, 7);
+  Button Center1 = new JoystickButton(operatorController, 8);
+  Button CenterShip = new JoystickButton(operatorController, 9);
+  Button Right3 = new JoystickButton(operatorController, 10);
+  Button Right2 = new JoystickButton(operatorController, 11);
+  Button Right1 = new JoystickButton(operatorController, 12);
+  Button RightShip = new JoystickButton(operatorController, 13);
+  Button RightGround = new JoystickButton(operatorController, 14);
 
 
 public  double getDriverRightY() {
@@ -76,6 +91,24 @@ public OI() {
 
   driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
   driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
+
+
+  Left3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_LEFT));
+  Left2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_LEFT));
+  Left1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_LEFT));
+  LeftShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_LEFT));
+  LeftGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_LEFT));
+  Center3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_CENTER));
+  Center2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_CENTER));
+  Center1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_CENTER));
+  CenterShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_CENTER));
+  Right3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_RIGHT));
+  Right2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_RIGHT));
+  Right1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_RIGHT));
+  RightShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_RIGHT));
+  RightGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_RIGHT));
+  
+
 
   //driverButtonLeftBumper.whenPressed(new TestingSparkMaxControllers(0));
 

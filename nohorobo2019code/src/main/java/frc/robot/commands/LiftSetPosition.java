@@ -7,11 +7,16 @@
 //what is liftdown???
 package frc.robot.commands;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LiftSetPosition extends Command {
-  public LiftSetPosition() {
+  double position;
+  public LiftSetPosition(double position) {
+    
+    position = this.position;
     requires(Robot.lift);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,24 +25,24 @@ public class LiftSetPosition extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
 
+  Robot.lift.setDesiredValuePID(position);
 
-
-    
-
-
-
+    //temporary
+    /*Robot.lift.liftTalon1.set(ControlMode.PercentOutput, this.position);
+    Robot.lift.liftTalon2.set(ControlMode.PercentOutput, this.position);*/
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.lift.isFinishedPID();
   }
 
   // Called once after isFinished returns true
