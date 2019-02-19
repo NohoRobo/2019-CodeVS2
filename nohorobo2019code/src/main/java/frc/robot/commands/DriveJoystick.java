@@ -12,14 +12,17 @@ import frc.robot.Robot;
 
 public class DriveJoystick extends Command {
   double speed;
-  public DriveJoystick(double speed) {
+  public DriveJoystick() {
 
-    this.speed = speed;
+    
     
     requires(Robot.drive);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
+
+  
+   
 
   // Called just before this Command runs the first time
   @Override
@@ -31,22 +34,12 @@ public class DriveJoystick extends Command {
   protected void execute() {
 
     //Robot.drive.setDriveStraight(this.speed);
-
-    if (Robot.m_oi.driverController.getRawAxis(3) > Robot.m_oi.driverController.getRawAxis(2)){
-
-      Robot.drive.setDriveStraight(Robot.m_oi.driverController.getRawAxis(3));
-    }
-    else if (Robot.m_oi.driverController.getRawAxis(2) > Robot.m_oi.driverController.getRawAxis(3)){
-
-      Robot.drive.setDriveStraight(-1*Robot.m_oi.driverController.getRawAxis(2));
-    }
-    else{
-      Robot.drive.setDriveStraight(0);
-    }
-    if ((Robot.m_oi.driverController.getRawAxis(3) < Robot.m_oi.STICK_DEADZONE)&&(Robot.m_oi.driverController.getRawAxis(2) < Robot.m_oi.STICK_DEADZONE)&&(Robot.m_oi.getDriverLeftX() == 0)){
-      Robot.drive.setDriveStraight(0);
-    }
-    Robot.drive.setDriveTurning(Robot.m_oi.getDriverLeftX());
+    Robot.drive.setDriveStraight(Robot.drive.checkStickDeadzone(Robot.m_oi.driverController.getRawAxis(3)-Robot.m_oi.driverController.getRawAxis(2))); 
+    Robot.drive.setDriveTurning(Robot.drive.checkTriggerDeadzone(Robot.m_oi.driverController.getRawAxis(0)));
+  
+    
+    
+    //Robot.drive.setDriveTurning(Robot.m_oi.getDriverLeftX());
     
 
 

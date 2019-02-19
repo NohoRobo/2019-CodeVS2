@@ -9,8 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ExampleCommand extends Command {
-  public ExampleCommand() {
+public class DriveStop extends Command {
+  public DriveStop() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

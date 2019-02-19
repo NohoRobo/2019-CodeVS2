@@ -13,7 +13,6 @@ import frc.robot.utilities.PIDArm;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -27,10 +26,9 @@ public class Arm extends Subsystem implements PIDSubSystem {
   TalonSRX Arm = new TalonSRX(RobotMap.swingArm775);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  //Talon ArmTalon = new Talon(RobotMap.swingArm775);
-  Encoder ArmEncoder1 = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
+  Encoder ArmEncoder = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
 
-  public PID pid = new PIDArm(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, ArmEncoder1);
+  public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0, false, ArmEncoder);
 
   public final double ARM_LEFT = 0;
   public final double ARM_CENTER = 0;
@@ -48,7 +46,7 @@ public class Arm extends Subsystem implements PIDSubSystem {
   }
 
   public double getArmTalonEncoder(){
-    return ArmEncoder1.get();
+    return ArmEncoder.get();
   }
   public double getDesiredValuePID(){
     return pid.getDesiredValue();

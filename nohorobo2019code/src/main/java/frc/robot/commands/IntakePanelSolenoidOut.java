@@ -14,20 +14,20 @@ public class IntakePanelSolenoidOut extends Command {
   public IntakePanelSolenoidOut() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.intake);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.intake.ExtendLeftPanelSolenoid();
+    Robot.intake.ExtendRightPanelSolenoid();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intake.ExtendLeftPanelSolenoid();
-    Robot.intake.ExtendRightPanelSolenoid();
-    Robot.intake.RetractLeftPanelSolenoid();
-    Robot.intake.RetractRightPanelSolenoid();
+
   }
 
 

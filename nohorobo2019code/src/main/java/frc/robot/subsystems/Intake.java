@@ -13,8 +13,6 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Timer;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IntakeCheckForBall;

@@ -8,9 +8,11 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveJoystick;
 import frc.robot.utilities.PIDSubSystem;
+import frc.robot.utilities.Utilities;
 import frc.robot.utilities.PID;
 import frc.robot.utilities.PIDDriveTurning;
 import frc.robot.utilities.PIDDriveStraight;
@@ -40,27 +42,38 @@ public class Drive extends Subsystem implements PIDSubSystem {
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
 
+public double invert = 1;
+  public double driveSpeed = 1;
+  private double speedStraight = 0;
+  private double speedTurning  = 0;
 
-  public static double driveSpeed = 1;
-
-  public PID pidDriveStraight = new PIDDriveStraight(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false,
+  public PID pidDriveStraight = new PIDDriveStraight(0, 0, 0, 0, 0, 0, 0, 0, false,
   leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
   rightFrontEncoder, rightMiddleEncoder, rightBackEncoder);
 
-  public PID pidDriveTurning = new PIDDriveTurning(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false,
+  public PID pidDriveTurning = new PIDDriveTurning(0, 0, 0, 0, 0, 0, 0, 0, false,
   leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
   rightFrontEncoder, rightMiddleEncoder, rightBackEncoder);
 
   @Override
   public void initDefaultCommand() {
 
-    setDefaultCommand(new DriveJoystick(0));
+    setDefaultCommand(new DriveJoystick());
 
     //setDefaultCommand(new DriveJoystick(-1*Robot.m_oi.getDriverLeftTrigger()));
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
+  
+  public void invertMotorDirection(){
+    if (invert == 1) this.invert=-1;
+    else this.invert=1;
+  }
+  public void stop(){
+    setDriveLeft(0);
+    setDriveRight(0);
+  }
   public void setDriveLeft(double speed){
     this.leftFront.set(speed);
     this.leftMiddle.set(speed);
@@ -74,13 +87,27 @@ public class Drive extends Subsystem implements PIDSubSystem {
   }
 
   public void setDriveStraight(double speed){
-    this.setDriveLeft(speed);
-    this.setDriveRight(speed);
+    this.speedStraight = speed;
+    setFinalDrive();
   }
-
+  private void setFinalDrive(){
+    setDriveMotors(Utilities.limit(this.driveSpeed * (this.speedStraight + this.speedTurning),-1,1), Utilities.limit(this.driveSpeed*(this.speedStraight - this.speedTurning),-1,1));
+  }
+  public void setDriveMotors(double leftSpeed, double rightSpeed){
+    this.setDriveLeft(leftSpeed);
+    this.setDriveRight(rightSpeed);
+  }
+  public double  checkStickDeadzone(double speed){
+    if(Math.abs(speed)>Robot.m_oi.STICK_DEADZONE) return speed;
+    else return 0;
+  }
+  public double checkTriggerDeadzone(double speed){
+    if(Math.abs(speed)>Robot.m_oi.TRIGGER_DEADZONE) return speed;
+    else return 0;
+  }
   public void setDriveTurning(double speed){
-    this.setDriveLeft(speed);
-    this.setDriveRight(-speed);
+    this.speedTurning = speed;
+    setFinalDrive();
   }
   
   public void setDriveMotorsPID(){
@@ -88,28 +115,18 @@ public class Drive extends Subsystem implements PIDSubSystem {
     this.setDriveTurning(this.pidDriveTurning.getMotorPower());
   }
 
-  public void enablePID(){
-    this.pidDriveStraight.enable();
-    this.pidDriveTurning.enable();
-  }
-
-  public void disablePID(){
-    this.pidDriveStraight.disable();
-    this.pidDriveTurning.disable();
-  }
-
   public void increaseMaxSpeed(){
-    driveSpeed += 0.25;
-    if (driveSpeed >= 1){
-      driveSpeed = 1;
+    this.driveSpeed += 0.25;
+    if (this.driveSpeed >= 1){
+      this.driveSpeed = 1;
     }
     //return driveSpeed;
   }
 
   public void decreaseMaxSpeed(){
-    driveSpeed -= 0.25;
-    if (driveSpeed <= 0){
-      driveSpeed = 0;
+    this.driveSpeed -= 0.25;
+    if (this.driveSpeed <= .25){
+      this.driveSpeed = .25;
     }
     //return driveSpeed;
   }

@@ -18,7 +18,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.TestingSparkMaxControllers;
 
 
 
@@ -32,7 +31,7 @@ public class Lift extends Subsystem implements PIDSubSystem {
   public TalonSRX liftTalon2 = new TalonSRX(RobotMap.liftLeft775);
   Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB);
 
-  PID pid = new PIDLift(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, liftEncoder);
+  PID pid = new PIDLift(0, 0, 0, 0, 0, 0, 0, 0, false, liftEncoder);
 
   public final double LIFT_MAX = 0;
   public final double LIFT_MIN = 0;
@@ -67,12 +66,7 @@ public void setTalon1Speed(double speed){
 public void setTalon2Speed(double speed){
    liftTalon2.set(ControlMode.PercentOutput, speed);
 }
-public void enablePID(){
-  pid.enable();
-}
-public void disablePID(){
-  pid.disable();
-}
+
 public double getDesiredValuePID(){
   return pid.getDesiredValue();
 }

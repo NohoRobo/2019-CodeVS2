@@ -14,7 +14,6 @@ import frc.robot.commands.DecreaseDriveSpeedJoystick;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
 import frc.robot.commands.IntakeRollerWheelSpinning;
-import frc.robot.commands.TestingSparkMaxControllers;
 
 
 /**
@@ -31,8 +30,8 @@ public class OI {
 	public static final int LEFT_Z_AXIS = 3;
 	public static final int RIGHT_Z_AXIS = 2;
 
-	public static final double STICK_DEADZONE = 0.3;
-	public static final double STICK_MAX = 0.97;
+  public static final double STICK_DEADZONE = 0.2;
+  public static final double TRIGGER_DEADZONE = 0.1;
 
   public Joystick driverController = new Joystick(0);
 	Button driverButtonA = new JoystickButton(driverController, 1);
@@ -111,99 +110,100 @@ public OI() {
   
 
 
-  //driverButtonLeftBumper.whenPressed(new TestingSparkMaxControllers(0));
+    //driverButtonLeftBumper.whenPressed(new TestingSparkMaxControllers(0));
 
-  
+    
 
-  //driverButtonY.whileHeld(new DriveJoystick(getRawAxis(RIGHT_Z_AXIS));
-  //driverButtonY.whenPressed(new DriveJoystick(0));
-
-
-
-
-  
-  //double drivespeed = 1;
-//  driverButtonA.whenPressed(driverspeed += 1);
-
-  /*if (driverButtonLeftBumper.
- 
-
-  }*/
-
-  /*driverButtonX.whenPressed(new DriveJoystick(-0.3));
-  driverButtonA.whenPressed(new DriveJoystick(0.3));
-
-  driverButtonX.whenReleased(new DriveJoystick(0));
-  driverButtonA.whenReleased(new DriveJoystick(0));*/
+    //driverButtonY.whileHeld(new DriveJoystick(getRawAxis(RIGHT_Z_AXIS));
+    //driverButtonY.whenPressed(new DriveJoystick(0));
 
 
 
- /*if button = 1{
-   motor = 1
- }
 
- if button2 = 1{
-   motor = -1
- }
+    
+    //double drivespeed = 1;
+  //  driverButtonA.whenPressed(driverspeed += 1);
 
- if button2 = 0 && button = 0{
-   motor = 0
- }*/
+    /*if (driverButtonLeftBumper.
 
-    /*new DriveJoystick(Drive.driveSpeedgetDriverRightTrigger());
-   new DriveJoystick(-1*Drive.driveSpeedgetDriverLeftTrigger());
 
-   if (getDriverLeftY() >.05 || getDriverLeftY() < -.05){
-    driverButtonY.whileHeld(new DriveJoystick(0.1));
-    driverButtonY.whenReleased(new DriveJoystick(0));
-   }*/
+    }*/
 
-   
+    /*driverButtonX.whenPressed(new DriveJoystick(-0.3));
+    driverButtonA.whenPressed(new DriveJoystick(0.3));
 
-   
-//Robot.subystems.Drive.driveSpeed = 2;
-  
-  
-  
-  
-  
+    driverButtonX.whenReleased(new DriveJoystick(0));
+    driverButtonA.whenReleased(new DriveJoystick(0));*/
+
+
+
+  /*if button = 1{
+    motor = 1
   }
 
+  if button2 = 1{
+    motor = -1
+  }
 
+if button2 = 0 && button = 0{
+  motor = 0
+}*/
 
+    /*new DriveJoystick(Drive.driveSpeedgetDriverRightTrigger());
+  new DriveJoystick(-1*Drive.driveSpeedgetDriverLeftTrigger());
 
+  if (getDriverLeftY() >.05 || getDriverLeftY() < -.05){
+    driverButtonY.whileHeld(new DriveJoystick(0.1));
+    driverButtonY.whenReleased(new DriveJoystick(0));
+  }*/
 
+  
 
-
-
-
-
-	
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
-
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
-
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
+  
+//Robot.subystems.Drive.driveSpeed = 2;
 }
+
+}
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//// CREATING BUTTONS
+// One type of button is a joystick button which is any button on a
+//// joystick.
+// You create one by telling it which joystick it's on and which button
+// number it is.
+// Joystick stick = new Joystick(port);
+// Button button = new JoystickButton(stick, buttonNumber);
+
+// There are a few additional built in buttons you can use. Additionally,
+// by subclassing Button you can create custom triggers and bind those to
+// commands the same as any other Button.
+
+//// TRIGGERING COMMANDS WITH BUTTONS
+// Once you have a button, it's trivial to bind it to a button in one of
+// three ways:
+
+// Start the command when the button is pressed and let it run the command
+// until it is finished as determined by it's isFinished method.
+// button.whenPressed(new ExampleCommand());
+
+// Run the command while the button is being held down and interrupt it once
+// the button is released.
+// button.whileHeld(new ExampleCommand());
+
+// Start the command when the button is released and let it run the command
+// until it is finished as determined by it's isFinished method.
+// button.whenReleased(new ExampleCommand());
+
