@@ -13,7 +13,10 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DecreaseDriveSpeedJoystick;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
+import frc.robot.commands.IntakePanelSolenoidToggle;
+import frc.robot.commands.IntakeRollerSolenoidToggle;
 import frc.robot.commands.IntakeRollerWheelSpinning;
+import frc.robot.commands.SpinRollers;
 
 
 /**
@@ -84,16 +87,19 @@ public double getDriverRightTrigger() {
 
 
 public OI() {
-
-  driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
+  driverButtonX.whenPressed(new IntakeRollerSolenoidToggle());
+  driverButtonY.whenPressed(new IntakePanelSolenoidToggle());
+  driverButtonB.whileHeld(new SpinRollers(1));
+  driverButtonA.whileHeld(new SpinRollers(-1));
+  /*driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
   driverButtonX.whenReleased(new IntakeRollerWheelSpinning(1));
   
 
   driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
-  driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
+  driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());*/
 
 
-  Left3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_LEFT));
+  /*Left3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_LEFT));
   Left2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_LEFT));
   Left1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_LEFT));
   LeftShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_LEFT));
@@ -106,7 +112,7 @@ public OI() {
   Right2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_RIGHT));
   Right1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_RIGHT));
   RightShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_RIGHT));
-  RightGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_RIGHT));
+  RightGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_RIGHT));*/
   
 
 

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+
   
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,7 +40,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-   m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+   m_chooser.setDefaultOption("Default Auto", new DriveStop());
     //chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -123,9 +124,42 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
+
     
 
     Scheduler.getInstance().run();
+
+
+    SmartDashboard.putNumber("RightFrontEncoder", Robot.drive.getDriveRF());
+    SmartDashboard.putNumber("RightMiddleEncoder", Robot.drive.getDriveRM());
+    SmartDashboard.putNumber("RightBackEncoder", Robot.drive.getDriveRB());
+    SmartDashboard.putNumber("LeftFrontEncoder", Robot.drive.getDriveLF());
+    SmartDashboard.putNumber("LeftMiddleEncoder", Robot.drive.getDriveLM());
+    SmartDashboard.putNumber("LeftBackEncoder", Robot.drive.getDriveLB());
+
+    SmartDashboard.putNumber("LiftEncoder", Robot.lift.getLiftTalonEncoder());
+
+    SmartDashboard.putNumber("ArmEncoder", Robot.arm.getEncoder());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   /**

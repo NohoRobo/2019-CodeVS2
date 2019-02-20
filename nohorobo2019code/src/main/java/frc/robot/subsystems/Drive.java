@@ -75,15 +75,15 @@ public double invert = 1;
     setDriveRight(0);
   }
   public void setDriveLeft(double speed){
-    this.leftFront.set(speed);
-    this.leftMiddle.set(speed);
-    this.leftBack.set(speed);
+   //this.leftFront.set(-speed);
+    //this.leftMiddle.set(-speed);
+    //this.leftBack.set(-speed);
   }
 
   public void setDriveRight(double speed){
-    this.rightFront.set(speed);
-    this.rightMiddle.set(speed);
-    this.rightBack.set(speed);
+    //this.rightFront.set(speed);
+    //this.rightMiddle.set(speed);
+    //this.rightBack.set(speed);
   }
 
   public void setDriveStraight(double speed){
@@ -91,7 +91,7 @@ public double invert = 1;
     setFinalDrive();
   }
   private void setFinalDrive(){
-    setDriveMotors(Utilities.limit(this.driveSpeed * (this.speedStraight + this.speedTurning),-1,1), Utilities.limit(this.driveSpeed*(this.speedStraight - this.speedTurning),-1,1));
+    setDriveMotors(Utilities.limit(this.driveSpeed * Math.pow(this.speedStraight + this.speedTurning,3),-1,1), Utilities.limit(this.driveSpeed*Math.pow(this.speedStraight - this.speedTurning,3),-1,1));
   }
   public void setDriveMotors(double leftSpeed, double rightSpeed){
     this.setDriveLeft(leftSpeed);
@@ -129,6 +129,43 @@ public double invert = 1;
       this.driveSpeed = .25;
     }
     //return driveSpeed;
+  }
+
+
+
+  public double getDriveRF(){
+
+    return rightFrontEncoder.getPosition();
+
+  }
+  public double getDriveRM(){
+
+    return rightMiddleEncoder.getPosition();
+
+  }
+
+  public double getDriveRB(){
+
+    return rightBackEncoder.getPosition();
+
+  }
+
+  public double getDriveLF(){
+
+    return leftFrontEncoder.getPosition();
+
+  }
+
+  public double getDriveLM(){
+
+    return leftMiddleEncoder.getPosition();
+
+  }
+
+  public double getDriveLB(){
+
+    return leftBackEncoder.getPosition();
+
   }
 
   /*public double setMaxSpeed(double toSet){

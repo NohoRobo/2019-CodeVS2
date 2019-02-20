@@ -22,7 +22,7 @@ public class GroupLiftArmProcedure extends CommandGroup {
     requires(Robot.lift);
     requires(Robot.arm);
 //start
-if (Robot.intake.BallHeld()){
+if (true/*Robot.intake.BallHeld()*/){
   if(liftpos == Robot.lift.LIFT_PANEL_1){
     liftpos = Robot.lift.LIFT_BALL_1;
   }
@@ -33,7 +33,7 @@ if (Robot.intake.BallHeld()){
     liftpos = Robot.lift.LIFT_BALL_3;
   }
 }
-
+/*
     if ((Robot.arm.pid.getDesiredValue()) != armpos){
       if (!((Robot.lift.getLiftTalonEncoder() < Robot.lift.LIFT_MAX)&&(Robot.lift.getLiftTalonEncoder() > Robot.lift.LIFT_MIN))){
         if (Math.abs(Robot.lift.getLiftTalonEncoder()-Robot.lift.LIFT_MIN) < Math.abs(Robot.lift.getLiftTalonEncoder()-Robot.lift.LIFT_MAX)){
@@ -78,5 +78,6 @@ if (Robot.intake.BallHeld()){
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
+    
   }
 }

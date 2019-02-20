@@ -10,31 +10,33 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ArmSetPosition extends Command {
-  double position;
-  public ArmSetPosition(double position){
-    position = this.position;
-    requires(Robot.arm);
+public class SpinRollerWhenOut extends Command {
+  double speed;
+  public SpinRollerWhenOut() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.intake);
+    this.speed = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    if(Robot.intake.RollerSolenoidStatus()){
+      Robot.intake.SetRollerMotors(-.3);
+    }
+    else Robot.intake.SetRollerMotors(-.3);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.arm.setDesiredValuePID(position);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return true;
-    //return Robot.arm.isFinishedPID();
   }
 
   // Called once after isFinished returns true
