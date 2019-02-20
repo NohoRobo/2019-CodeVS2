@@ -65,39 +65,47 @@ public double invert = 1;
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  
   public void invertMotorDirection(){
     if (invert == 1) this.invert=-1;
     else this.invert=1;
+  }
+  public void setDriveStraight(double speed){
+    this.speedStraight = speed;
+    setFinalDrive();
+  }
+  private void setFinalDrive(){
+    setDriveMotors(this.speedStraight+this.speedTurning, this.speedStraight-this.speedTurning); 
+  }
+  public void setDriveMotors(double leftSpeed, double rightSpeed){
+    this.setDriveLeft(leftSpeed);
+    this.setDriveRight(rightSpeed);
   }
   public void stop(){
     setDriveLeft(0);
     setDriveRight(0);
   }
   public void setDriveLeft(double speed){
-    this.leftFront.set(speed);
-    this.leftMiddle.set(speed);
-    this.leftBack.set(speed);
+    this.leftFront.set(this.invert*(Utilities.limit(speed, -1, 1)));
+    this.leftMiddle.set(this.invert*(Utilities.limit(speed, -1, 1)));
+    this.leftBack.set(this.invert*(Utilities.limit(speed, -1, 1)));
   }
 
   public void setDriveRight(double speed){
-    this.rightFront.set(speed);
-    this.rightMiddle.set(speed);
-    this.rightBack.set(speed);
+    this.rightFront.set(this.invert*(Utilities.limit(speed, -1, 1)));
+    this.rightMiddle.set(this.invert*(Utilities.limit(speed, -1, 1)));
+    this.rightBack.set(this.invert*(Utilities.limit(speed, -1, 1)));
+  }
+  
+  public void setDriveMotorsPID(){
+    this.setDriveStraight(Utilities.limit(this.pidDriveStraight.getMotorPower(),-1,1));
+    this.setDriveTurning(Utilities.limit(this.pidDriveTurning.getMotorPower(),-1,1));
   }
 
-  public void setDriveStraight(double speed){
-    this.speedStraight = speed;
+  public void setDriveTurning(double speed){
+    this.speedTurning = speed;
     setFinalDrive();
   }
-  private void setFinalDrive(){
-    setDriveMotors(Utilities.limit(this.driveSpeed * (this.speedStraight + this.speedTurning),-1,1), Utilities.limit(this.driveSpeed*(this.speedStraight - this.speedTurning),-1,1));
-  }
-  public void setDriveMotors(double leftSpeed, double rightSpeed){
-    this.setDriveLeft(leftSpeed);
-    this.setDriveRight(rightSpeed);
-  }
-  public double  checkStickDeadzone(double speed){
+  public double checkStickDeadzone(double speed){
     if(Math.abs(speed)>Robot.m_oi.STICK_DEADZONE) return speed;
     else return 0;
   }
@@ -105,31 +113,24 @@ public double invert = 1;
     if(Math.abs(speed)>Robot.m_oi.TRIGGER_DEADZONE) return speed;
     else return 0;
   }
-  public void setDriveTurning(double speed){
-    this.speedTurning = speed;
-    setFinalDrive();
-  }
-  
-  public void setDriveMotorsPID(){
-    this.setDriveStraight(this.pidDriveStraight.getMotorPower());
-    this.setDriveTurning(this.pidDriveTurning.getMotorPower());
-  }
 
   public void increaseMaxSpeed(){
-    this.driveSpeed += 0.25;
-    if (this.driveSpeed >= 1){
-      this.driveSpeed = 1;
+    driveSpeed += 0.25;
+    if (driveSpeed >= 1){
+      driveSpeed = 1;
     }
     //return driveSpeed;
   }
 
   public void decreaseMaxSpeed(){
-    this.driveSpeed -= 0.25;
-    if (this.driveSpeed <= .25){
-      this.driveSpeed = .25;
+    driveSpeed -= 0.25;
+    if (driveSpeed <= 0){
+      driveSpeed = 0;
     }
     //return driveSpeed;
   }
+    //return driveSpeed;
+  
 
   /*public double setMaxSpeed(double toSet){
     driveSpeed = (toSet > 1) ? +.25 : -.25;

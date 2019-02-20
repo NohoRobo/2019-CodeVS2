@@ -36,16 +36,8 @@ public class DriveJoystick extends Command {
     //Robot.drive.setDriveStraight(this.speed);
     Robot.drive.setDriveStraight(Robot.drive.checkStickDeadzone(Robot.m_oi.driverController.getRawAxis(3)-Robot.m_oi.driverController.getRawAxis(2))); 
     Robot.drive.setDriveTurning(Robot.drive.checkTriggerDeadzone(Robot.m_oi.driverController.getRawAxis(0)));
-  
-    
-    
+
     //Robot.drive.setDriveTurning(Robot.m_oi.getDriverLeftX());
-    
-
-
-
-
-
 
 
   }

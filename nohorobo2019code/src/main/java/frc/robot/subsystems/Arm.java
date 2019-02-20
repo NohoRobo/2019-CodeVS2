@@ -28,7 +28,8 @@ public class Arm extends Subsystem implements PIDSubSystem {
   // here. Call these from Commands.
   Encoder ArmEncoder = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
 
-  public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0, false, ArmEncoder);
+  public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0 
+  , false, ArmEncoder);
 
   public final double ARM_LEFT = 0;
   public final double ARM_CENTER = 0;
