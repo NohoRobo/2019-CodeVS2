@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IntakeCheckForBall;
+import frc.robot.commands.SpinRollerWhenOut;
+import frc.robot.commands.SpinRollers;
 
 /**
  * Add your docs here.
@@ -27,16 +29,16 @@ public class Intake extends Subsystem {
   Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
   Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
   Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
-  Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
+  //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
 
   public final double BALL_RANGE = 2;
 
   @Override
   public void initDefaultCommand() {
 
-    
+    setDefaultCommand(new SpinRollerWhenOut());
 
-    setDefaultCommand(new IntakeCheckForBall());
+    //setDefaultCommand(new IntakeCheckForBall());
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
@@ -72,7 +74,8 @@ public class Intake extends Subsystem {
   public boolean RightPanelSolenoidStatus(){
     return RightPanelSolenoid.get();
   }
-  
+
+  /*
   public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
   }
@@ -85,4 +88,5 @@ public class Intake extends Subsystem {
   public boolean BallHeld(){
     return UltrasonicSensor.getRangeInches() < BALL_RANGE;
   }
+  */
 }

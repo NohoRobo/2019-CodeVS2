@@ -19,7 +19,7 @@ public class IntakeCheckForBall extends CommandGroup {
 
 
 
-    if (Robot.intake.BallHeld()){
+    /*if (Robot.intake.BallHeld()){
       addSequential(new WaitCommand(0.65));
       addSequential(new IntakePanelSolenoidIn());
     }
@@ -28,6 +28,7 @@ public class IntakeCheckForBall extends CommandGroup {
       addSequential(new WaitCommand(0.65));
       addSequential(new IntakeRollerWheelSpinning(1));
     }
+    */
 
 
 
