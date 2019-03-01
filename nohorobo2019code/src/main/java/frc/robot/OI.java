@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.DecreaseDriveSpeedJoystick;
+import frc.robot.commands.GroupAuton;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
 import frc.robot.commands.IntakePanelSolenoidToggle;
@@ -87,8 +88,15 @@ public class OI {
   public OI() {
     driverButtonX.whenPressed(new IntakeRollerSolenoidToggle());
     driverButtonY.whenPressed(new IntakePanelSolenoidToggle());
-    driverButtonB.whileHeld(new SpinRollers(1));
-    driverButtonA.whileHeld(new SpinRollers(-1));
+
+    //add this back before running a match
+    /*driverButtonB.whileHeld(new SpinRollers(1));
+    driverButtonA.whileHeld(new SpinRollers(-1));*/
+
+
+    //run auton with button press (for testing)
+    driverButtonB.whenPressed(new GroupAuton(true));
+
     driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
     driverButtonX.whenReleased(new IntakeRollerWheelSpinning(1));
     

@@ -8,10 +8,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
+import java.util.concurrent.TimeUnit;
 
 public class GroupAuton extends CommandGroup {
   public GroupAuton(boolean onLeftSideOfField) {
     addSequential(new SetSideOfFieldIsLeft(onLeftSideOfField));
+    addParallel(new DriveForwardPID(1000));
+    while ((800 > (Robot.drive.getDriveLF()))&&((Robot.drive.getDriveLF()) > 200)){
+      //TimeUnit.SECONDS.sleep(0.001);
+    }
+
     //addSequential();
     // Add Commands here:
     // e.g. addSequential(new Command1());
