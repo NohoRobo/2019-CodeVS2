@@ -32,17 +32,19 @@ public class Lift extends Subsystem implements PIDSubSystem {
   Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB);
 
   PID pid = new PIDLift(0, 0, 0, 0, 0, 0, 0, 0, false, liftEncoder);
+  
+  public boolean ballHeld = false;
 
-  public final double LIFT_MAX = 0;
-  public final double LIFT_MIN = 0;
+  public final double LIFT_MAX_TURNING = 0;
+  public final double LIFT_MIN_TURNING = 0;
+  public final double LIFT_GROUND = 0;
   public final double LIFT_PANEL_3 = 0;
   public final double LIFT_PANEL_2 = 0;
-  public final double LIFT_PANEL_1 = 0;
+  public final double LIFT_PANEL_1 = LIFT_GROUND;
   public final double LIFT_BALL_3 = 0;
   public final double LIFT_BALL_2 = 0;
   public final double LIFT_BALL_1 = 0;
-  public final double LIFT_GROUND = 0;
-  public final double LIFT_SHIP = 0;
+  public final double LIFT_BALL_SHIP = 0;
 
 
   @Override

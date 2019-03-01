@@ -15,24 +15,20 @@ public class GroupLiftArmProcedure extends CommandGroup {
    * Add your docs here.
    */
 
-   double liftpos;
-   double armpos;
   public GroupLiftArmProcedure(double liftpos, double armpos) {
-
     requires(Robot.lift);
     requires(Robot.arm);
-//start
-if (true/*Robot.intake.BallHeld()*/){
-  if(liftpos == Robot.lift.LIFT_PANEL_1){
-    liftpos = Robot.lift.LIFT_BALL_1;
-  }
-  else if(liftpos == Robot.lift.LIFT_PANEL_2){
-    liftpos = Robot.lift.LIFT_BALL_2;
-  }
-  else if(liftpos == Robot.lift.LIFT_PANEL_3){
-    liftpos = Robot.lift.LIFT_BALL_3;
-  }
-}
+    if (Robot.lift.ballHeld){
+      if(liftpos == Robot.lift.LIFT_PANEL_1){
+        liftpos = Robot.lift.LIFT_BALL_1;
+      }
+      else if(liftpos == Robot.lift.LIFT_PANEL_2){
+        liftpos = Robot.lift.LIFT_BALL_2;
+      }
+      else if(liftpos == Robot.lift.LIFT_PANEL_3){
+        liftpos = Robot.lift.LIFT_BALL_3;
+      }
+    }
 /*
     if ((Robot.arm.pid.getDesiredValue()) != armpos){
       if (!((Robot.lift.getLiftTalonEncoder() < Robot.lift.LIFT_MAX)&&(Robot.lift.getLiftTalonEncoder() > Robot.lift.LIFT_MIN))){
