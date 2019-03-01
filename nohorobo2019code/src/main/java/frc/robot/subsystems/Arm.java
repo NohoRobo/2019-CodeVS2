@@ -11,6 +11,8 @@ import frc.robot.utilities.PIDSubSystem;
 import frc.robot.utilities.PID;
 import frc.robot.utilities.PIDArm;
 
+import frc.robot.Robot;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
@@ -29,17 +31,21 @@ public class Arm extends Subsystem implements PIDSubSystem {
   public final double ARM_LEFT = 0;
   public final double ARM_CENTER = 0;
   public final double ARM_RIGHT = 0;
-  
-
 
   @Override
   public void initDefaultCommand() {
     //this.setMotorSpeed(0);
   }
+
   public double getEncoder(){
-    return Arm.getSelectedSensorPosition();
+    return Arm.getSelectedSensorPosition()*reverse();
   }
+  
   public void setMotorSpeed(double speed){
-    Arm.set(ControlMode.PercentOutput,speed);
+    Arm.set(ControlMode.PercentOutput,speed*reverse());
+  }
+
+  private int reverse(){
+    return (Robot.onLeftSideOfField?1:-1);
   }
 }

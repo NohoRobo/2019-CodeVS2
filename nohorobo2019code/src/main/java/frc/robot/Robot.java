@@ -22,6 +22,8 @@ public class Robot extends TimedRobot {
   public static Lift lift = new Lift();
   public static OI oi;
 
+  public static boolean onLeftSideOfField;
+
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
 

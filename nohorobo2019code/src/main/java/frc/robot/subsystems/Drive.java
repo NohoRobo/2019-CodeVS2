@@ -17,6 +17,8 @@ import frc.robot.utilities.PID;
 import frc.robot.utilities.PIDDriveTurning;
 import frc.robot.utilities.PIDDriveStraight;
 
+import frc.robot.Robot;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.*;
@@ -35,7 +37,6 @@ public class Drive extends Subsystem implements PIDSubSystem {
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
 
-  public double invert = 1;
   public double driveSpeed = 1;
   private double speedStraight = 0;
   private double speedTurning  = 0;
@@ -53,22 +54,20 @@ public class Drive extends Subsystem implements PIDSubSystem {
     setDefaultCommand(new DriveJoystick());
   }
 
-  
-  public void invertMotorDirection(){
-    if (invert == 1) this.invert=-1;
-    else this.invert=1;
-  }
   public void stop(){
     setDriveLeft(0);
     setDriveRight(0);
   }
+
   public void setDriveLeft(double speed){
+    speed *= reverse();
     this.leftFront.set(-speed);
     this.leftMiddle.set(-speed);
     this.leftBack.set(-speed);
   }
 
   public void setDriveRight(double speed){
+    speed *= reverse();
     this.rightFront.set(speed);
     this.rightMiddle.set(speed);
     this.rightBack.set(speed);
@@ -117,26 +116,30 @@ public class Drive extends Subsystem implements PIDSubSystem {
     }
   }
   public double getDriveRF(){
-    return rightFrontEncoder.getPosition();
+    return reverse()*rightFrontEncoder.getPosition();
   }
   public double getDriveRM(){
-    return rightMiddleEncoder.getPosition();
+    return reverse()*rightMiddleEncoder.getPosition();
   }
 
   public double getDriveRB(){
-    return rightBackEncoder.getPosition();
+    return reverse()*rightBackEncoder.getPosition();
   }
 
   public double getDriveLF(){
-    return leftFrontEncoder.getPosition();
+    return reverse()*leftFrontEncoder.getPosition();
   }
 
   public double getDriveLM(){
-    return leftMiddleEncoder.getPosition();
+    return reverse()*leftMiddleEncoder.getPosition();
   }
 
   public double getDriveLB(){
-    return leftBackEncoder.getPosition();
+    return reverse()*leftBackEncoder.getPosition();
+  }
+
+  private int reverse(){
+    return (Robot.onLeftSideOfField?1:-1);
   }
 
   /*public double setMaxSpeed(double toSet){
