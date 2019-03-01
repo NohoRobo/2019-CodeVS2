@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeRollerSolenoidIn extends Command {
-  public IntakeRollerSolenoidIn() {
+public class IntakeRollerSolenoidToggle extends Command {
+  public IntakeRollerSolenoidToggle() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.intake);
@@ -20,14 +20,18 @@ public class IntakeRollerSolenoidIn extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    if (Robot.intake.RollerSolenoidStatus()){
+      Robot.intake.RetractRollerSolenoid();
+    }
+    else{
+      Robot.intake.ExtendRollerSolenoid();
+    }
   }
+  
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    Robot.intake.RetractRollerSolenoid();
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +43,6 @@ public class IntakeRollerSolenoidIn extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
   }
 
   // Called when another command which requires one or more of the same

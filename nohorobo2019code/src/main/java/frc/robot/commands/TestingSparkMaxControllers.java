@@ -10,11 +10,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeRollerSolenoidIn extends Command {
-  public IntakeRollerSolenoidIn() {
+
+
+
+public class TestingSparkMaxControllers extends Command {
+  double speed;
+
+  public TestingSparkMaxControllers(double speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
+    this.speed = speed;
+    requires(Robot.lift);
+    
   }
 
   // Called just before this Command runs the first time
@@ -25,21 +32,20 @@ public class IntakeRollerSolenoidIn extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.lift.setTalon1Speed(Robot.m_oi.driverController.getRawAxis(1));
+    Robot.lift.setTalon2Speed(Robot.m_oi.driverController.getRawAxis(1));
 
-    Robot.intake.RetractRollerSolenoid();
-    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
   }
 
   // Called when another command which requires one or more of the same

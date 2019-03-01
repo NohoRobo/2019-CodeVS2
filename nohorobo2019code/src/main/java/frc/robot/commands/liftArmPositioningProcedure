@@ -1,0 +1,6 @@
+1. check for turn (if turn needed, step 2, else go to last step)
+2. check for within turning range (if yes, step 4, else, step 3)
+3. not in range, go to nearest max or min range
+4. is target in range (if yes, turn and lift directly to target, if no, step 5)
+5. go to nearest target max or min while turning to position
+6. go to target height

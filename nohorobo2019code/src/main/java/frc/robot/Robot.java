@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+
   
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +24,7 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Arm arm =  new Arm();
+  public static Arm arm =  new Arm(); 
   public static Drive drive = new Drive();
   public static Intake intake = new Intake();
   public static Lift lift = new Lift();
@@ -39,8 +40,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+   m_chooser.setDefaultOption("Default Auto", new DriveStop());
+    //chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
@@ -113,7 +114,7 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+          m_autonomousCommand.cancel();
     }
   }
 
@@ -122,7 +123,43 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
+
+    
+
     Scheduler.getInstance().run();
+
+
+    SmartDashboard.putNumber("RightFrontEncoder", Robot.drive.getDriveRF());
+    SmartDashboard.putNumber("RightMiddleEncoder", Robot.drive.getDriveRM());
+    SmartDashboard.putNumber("RightBackEncoder", Robot.drive.getDriveRB());
+    SmartDashboard.putNumber("LeftFrontEncoder", Robot.drive.getDriveLF());
+    SmartDashboard.putNumber("LeftMiddleEncoder", Robot.drive.getDriveLM());
+    SmartDashboard.putNumber("LeftBackEncoder", Robot.drive.getDriveLB());
+
+    SmartDashboard.putNumber("LiftEncoder", Robot.lift.getLiftTalonEncoder());
+
+    SmartDashboard.putNumber("ArmEncoder", Robot.arm.getEncoder());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   /**

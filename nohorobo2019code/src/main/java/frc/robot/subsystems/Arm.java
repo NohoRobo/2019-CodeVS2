@@ -7,14 +7,15 @@
 
 package frc.robot.subsystems;
 
-
 import frc.robot.utilities.PIDSubSystem;
 import frc.robot.utilities.PID;
 import frc.robot.utilities.PIDArm;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANEncoder;
+
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -23,20 +24,42 @@ import frc.robot.RobotMap;
  */
 public class Arm extends Subsystem implements PIDSubSystem {
 
-  VictorSP Arm = new VictorSP(RobotMap.swingArm775);
+  TalonSRX Arm = new TalonSRX(RobotMap.swingArm775);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  Talon ArmTalon = new Talon(RobotMap.swingArm775);
-  Encoder ArmEncoder = new Encoder(RobotMap.swingArmEncoderA, RobotMap.swingArmEncoderB);
+   //CANEncoder ArmEncoder = new CANEncoder(Arm);
+  //public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0, false, ArmEncoder);
 
-  PID pid = new PIDArm(0.1, 0.1, 0.1, 1.0, 1.0, 0.2, 5.0, 0.1, false, ArmEncoder);
+  public final double ARM_LEFT = 0;
+  public final double ARM_CENTER = 0;
+  public final double ARM_RIGHT = 0;
+  
+
 
   @Override
   public void initDefaultCommand() {
-    this.setMotorSpeed(0);
+    //this.setMotorSpeed(0);
+  }
+  public double getEncoder(){
+    return Arm.getSelectedSensorPosition();
+  }
+/*
+  public void setMotorSpeed(double speed){
+    Arm.set(ControlMode.PercentOutput,speed);
   }
 
-  public void setMotorSpeed(double speed){
-    Arm.set(speed);
+  public double getArmTalonEncoder(){
+    return ArmEncoder.get();
   }
+  *//*
+  public double getDesiredValuePID(){
+    return pid.getDesiredValue();
+  }
+  public void setDesiredValuePID(double value){
+    pid.setDesiredValue(value);
+  }
+  public boolean isFinishedPID(){
+    return pid.isFinished();
+  }
+  */
 }

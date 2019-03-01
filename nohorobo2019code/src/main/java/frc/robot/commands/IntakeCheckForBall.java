@@ -8,12 +8,38 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
+import frc.robot.Robot;
 
-public class GroupIntakeArmJoystick extends CommandGroup {
+public class IntakeCheckForBall extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public GroupIntakeArmJoystick() {
+  public IntakeCheckForBall() {
+
+
+
+    /*if (Robot.intake.BallHeld()){
+      addSequential(new WaitCommand(0.65));
+      addSequential(new IntakePanelSolenoidIn());
+    }
+
+    if (!(Robot.intake.BallHeld())){
+      addSequential(new WaitCommand(0.65));
+      addSequential(new IntakeRollerWheelSpinning(1));
+    }
+    */
+
+
+
+
+
+
+
+
+
+
+
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
