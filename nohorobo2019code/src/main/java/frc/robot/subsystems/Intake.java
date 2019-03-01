@@ -16,9 +16,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.SpinRollerWhenOut;
 
-/**
- * Add your docs here.
- */
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
@@ -32,12 +29,7 @@ public class Intake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-
     setDefaultCommand(new SpinRollerWhenOut());
-
-    //setDefaultCommand(new IntakeCheckForBall());
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
   }
   
   public void setRollerMotors(double speed){
@@ -50,7 +42,7 @@ public class Intake extends Subsystem {
   public void retractRollerSolenoid(){
     RollerSolenoid.set(false);
   }
-  public boolean getRollerSolenoidStatus(){
+  public boolean getRollerSolenoidOut(){
     return RollerSolenoid.get();
   }
   public void extendPanelPistons(){
@@ -61,7 +53,7 @@ public class Intake extends Subsystem {
     LeftPanelSolenoid.set(false);
     RightPanelSolenoid.set(false);
   }
-  public boolean getPanelPistonStatus(){
+  public boolean getPanelPistonOut(){
     return LeftPanelSolenoid.get();
   }
 

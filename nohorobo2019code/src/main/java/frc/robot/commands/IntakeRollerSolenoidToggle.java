@@ -20,7 +20,7 @@ public class IntakeRollerSolenoidToggle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (Robot.intake.getRollerSolenoidStatus()){
+    if (Robot.intake.getRollerSolenoidOut()){
       Robot.intake.retractRollerSolenoid();;
     }
     else{

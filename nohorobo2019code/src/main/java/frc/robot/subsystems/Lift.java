@@ -72,10 +72,8 @@ public boolean isFinishedPID(){
   return pid.isFinished();
 }
 public double getLiftTalonEncoder(){
-
   //liftEncoder.get();
   return liftEncoder.get();
-
 }
 
 /*public void setTalonEncoder(double position){

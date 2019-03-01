@@ -20,7 +20,7 @@ public class IntakePanelSolenoidToggle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (Robot.intake.getPanelPistonStatus()){
+    if (Robot.intake.getPanelPistonOut()){
       Robot.intake.retractPanelPistons();;
     }
     else{
