@@ -33,8 +33,8 @@ public class DriveJoystick extends Command {
   @Override
   protected void execute() {
     double straightSpeed = Robot.drive.checkStickDeadzone(
-      Robot.m_oi.driverController.getRawAxis(3)-Robot.m_oi.driverController.getRawAxis(2));
-    double turningSpeed = Robot.drive.checkTriggerDeadzone(Robot.m_oi.driverController.getRawAxis(0));
+      Robot.oi.driverController.getRawAxis(3)-Robot.oi.driverController.getRawAxis(2));
+    double turningSpeed = Robot.drive.checkTriggerDeadzone(Robot.oi.driverController.getRawAxis(0));
     
     Robot.drive.setDriveStraight(Math.pow(straightSpeed, 3.0)); 
     Robot.drive.setDriveTurning(Math.pow(turningSpeed, 3.0));
