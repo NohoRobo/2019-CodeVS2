@@ -8,8 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
+import frc.robot.OI;
 import frc.robot.commands.DriveJoystick;
 import frc.robot.utilities.PIDSubSystem;
 import frc.robot.utilities.Utilities;
@@ -86,11 +86,11 @@ public class Drive extends Subsystem implements PIDSubSystem {
     this.setDriveRight(rightSpeed);
   }
   public double checkStickDeadzone(double speed){
-    if(Math.abs(speed)>Robot.m_oi.STICK_DEADZONE) return speed;
+    if(Math.abs(speed)>OI.STICK_DEADZONE) return speed;
     else return 0;
   }
   public double checkTriggerDeadzone(double speed){
-    if(Math.abs(speed)>Robot.m_oi.TRIGGER_DEADZONE) return speed;
+    if(Math.abs(speed)>OI.TRIGGER_DEADZONE) return speed;
     else return 0;
   }
   public void setDriveTurning(double speed){

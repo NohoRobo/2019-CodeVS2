@@ -51,7 +51,7 @@ public class IntakeRollerWheelSpinning extends Command {
 
     // solenoid in and button pressed
     
-    Robot.intake.SetRollerMotors(this.speed);
+    Robot.intake.setRollerMotors(this.speed);
     
 
 
