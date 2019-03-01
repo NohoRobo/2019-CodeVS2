@@ -14,6 +14,8 @@ public class GroupAuton extends CommandGroup {
    * Add your docs here.
    */
   public GroupAuton() {
+
+    addSequential();
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());

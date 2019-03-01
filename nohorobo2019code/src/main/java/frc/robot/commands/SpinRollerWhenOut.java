@@ -16,7 +16,7 @@ public class SpinRollerWhenOut extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.intake);
-    this.speed = speed;
+    this.speed = speed;  
   }
 
   // Called just before this Command runs the first time
