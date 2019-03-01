@@ -20,13 +20,11 @@ public class IntakePanelSolenoidToggle extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (Robot.intake.LeftPanelSolenoidStatus() && Robot.intake.RightPanelSolenoidStatus()){
-      Robot.intake.RetractLeftPanelSolenoid();
-      Robot.intake.RetractRightPanelSolenoid();
+    if (Robot.intake.getPanelPistonStatus()){
+      Robot.intake.retractPanelPistons();;
     }
     else{
-      Robot.intake.ExtendLeftPanelSolenoid();
-      Robot.intake.ExtendRightPanelSolenoid();
+      Robot.intake.extendPanelPistons();;
     }
   }
 

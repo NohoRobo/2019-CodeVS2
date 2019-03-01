@@ -11,11 +11,9 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Ultrasonic;
+//import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.GroupLiftArmProcedure;
-import frc.robot.commands.IntakeCheckForBall;
 import frc.robot.commands.SpinRollerWhenOut;
 import frc.robot.commands.SpinRollers;
 
@@ -43,36 +41,29 @@ public class Intake extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
   
-  public void SetRollerMotors(double speed){
+  public void setRollerMotors(double speed){
     RollerMotor.set(ControlMode.PercentOutput, speed);
   }
   
-  public void ExtendRollerSolenoid(){
+  public void extendRollerSolenoid(){
     RollerSolenoid.set(true);
   }
-  public void RetractRollerSolenoid(){
+  public void retractRollerSolenoid(){
     RollerSolenoid.set(false);
   }
-  public boolean RollerSolenoidStatus(){
+  public boolean getRollerSolenoidStatus(){
     return RollerSolenoid.get();
   }
-  public void ExtendLeftPanelSolenoid(){
+  public void extendPanelPistons(){
     LeftPanelSolenoid.set(true);
-  }
-  public void RetractLeftPanelSolenoid(){
-    LeftPanelSolenoid.set(false);
-  }
-  public boolean LeftPanelSolenoidStatus(){
-    return LeftPanelSolenoid.get();
-  }
-  public void ExtendRightPanelSolenoid(){
     RightPanelSolenoid.set(true);
   }
-  public void RetractRightPanelSolenoid(){
+  public void retractPanelPistons(){
+    LeftPanelSolenoid.set(false);
     RightPanelSolenoid.set(false);
   }
-  public boolean RightPanelSolenoidStatus(){
-    return RightPanelSolenoid.get();
+  public boolean getPanelPistonStatus(){
+    return LeftPanelSolenoid.get();
   }
 
   /*

@@ -20,8 +20,7 @@ public class IntakePanelSolenoidOut extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.ExtendLeftPanelSolenoid();
-    Robot.intake.ExtendRightPanelSolenoid();
+    Robot.intake.extendPanelPistons();
   }
 
   // Called repeatedly when this Command is scheduled to run

@@ -19,14 +19,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
-
-
-/**
- * Add your docs here.
- */
 public class Lift extends Subsystem implements PIDSubSystem {
-  // Pu1t methods for controlling this subsystem 
-  // here. Call these from Commands.
   public TalonSRX liftTalon1 = new TalonSRX(RobotMap.liftRight775);
   public TalonSRX liftTalon2 = new TalonSRX(RobotMap.liftLeft775);
   Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB);

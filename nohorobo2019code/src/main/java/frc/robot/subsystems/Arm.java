@@ -13,9 +13,7 @@ import frc.robot.utilities.PIDArm;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.revrobotics.CANEncoder;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -25,10 +23,8 @@ import frc.robot.RobotMap;
 public class Arm extends Subsystem implements PIDSubSystem {
 
   TalonSRX Arm = new TalonSRX(RobotMap.swingArm775);
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-   //CANEncoder ArmEncoder = new CANEncoder(Arm);
-  //public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0, false, ArmEncoder);
+
+  public PID pid = new PIDArm(0, 0, 0, 0, 0, 0, 0, 0, false, Arm);
 
   public final double ARM_LEFT = 0;
   public final double ARM_CENTER = 0;
@@ -43,23 +39,7 @@ public class Arm extends Subsystem implements PIDSubSystem {
   public double getEncoder(){
     return Arm.getSelectedSensorPosition();
   }
-/*
   public void setMotorSpeed(double speed){
     Arm.set(ControlMode.PercentOutput,speed);
   }
-
-  public double getArmTalonEncoder(){
-    return ArmEncoder.get();
-  }
-  *//*
-  public double getDesiredValuePID(){
-    return pid.getDesiredValue();
-  }
-  public void setDesiredValuePID(double value){
-    pid.setDesiredValue(value);
-  }
-  public boolean isFinishedPID(){
-    return pid.isFinished();
-  }
-  */
 }

@@ -60,156 +60,54 @@ public class OI {
   Button RightShip = new JoystickButton(operatorController, 13);
   Button RightGround = new JoystickButton(operatorController, 14);
 
-
-public  double getDriverRightY() {
-  return -driverController.getRawAxis(RIGHT_VERT_AXIS);
-}
-
-public double getDriverRightX() {
-  return driverController.getRawAxis(RIGHT_HORIZ_AXIS);
-}
-
-public double getDriverLeftY() {
-  return -driverController.getRawAxis(LEFT_VERT_AXIS);
-}
-
-public double getDriverLeftX() {
-  return driverController.getRawAxis(LEFT_HORIZ_AXIS);
-}
-
-public double getDriverLeftTrigger() {
-  return driverController.getRawAxis(LEFT_Z_AXIS);
-}
-
-public double getDriverRightTrigger() {
-  return driverController.getRawAxis(RIGHT_Z_AXIS);
-}
-
-
-public OI() {
-  driverButtonX.whenPressed(new IntakeRollerSolenoidToggle());
-  driverButtonY.whenPressed(new IntakePanelSolenoidToggle());
-  driverButtonB.whileHeld(new SpinRollers(1));
-  driverButtonA.whileHeld(new SpinRollers(-1));
-  /*driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
-  driverButtonX.whenReleased(new IntakeRollerWheelSpinning(1));
-  
-
-  driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
-  driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());*/
-
-
-  /*Left3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_LEFT));
-  Left2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_LEFT));
-  Left1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_LEFT));
-  LeftShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_LEFT));
-  LeftGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_LEFT));
-  Center3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_CENTER));
-  Center2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_CENTER));
-  Center1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_CENTER));
-  CenterShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_CENTER));
-  Right3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_RIGHT));
-  Right2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_RIGHT));
-  Right1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_RIGHT));
-  RightShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_SHIP,Robot.arm.ARM_RIGHT));
-  RightGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_RIGHT));*/
-  
-
-
-    //driverButtonLeftBumper.whenPressed(new TestingSparkMaxControllers(0));
-
-    
-
-    //driverButtonY.whileHeld(new DriveJoystick(getRawAxis(RIGHT_Z_AXIS));
-    //driverButtonY.whenPressed(new DriveJoystick(0));
-
-
-
-
-    
-    //double drivespeed = 1;
-  //  driverButtonA.whenPressed(driverspeed += 1);
-
-    /*if (driverButtonLeftBumper.
-
-
-    }*/
-
-    /*driverButtonX.whenPressed(new DriveJoystick(-0.3));
-    driverButtonA.whenPressed(new DriveJoystick(0.3));
-
-    driverButtonX.whenReleased(new DriveJoystick(0));
-    driverButtonA.whenReleased(new DriveJoystick(0));*/
-
-
-
-  /*if button = 1{
-    motor = 1
+  public  double getDriverRightY() {
+    return -driverController.getRawAxis(RIGHT_VERT_AXIS);
   }
 
-  if button2 = 1{
-    motor = -1
+  public double getDriverRightX() {
+    return driverController.getRawAxis(RIGHT_HORIZ_AXIS);
   }
 
-if button2 = 0 && button = 0{
-  motor = 0
-}*/
+  public double getDriverLeftY() {
+    return -driverController.getRawAxis(LEFT_VERT_AXIS);
+  }
 
-    /*new DriveJoystick(Drive.driveSpeedgetDriverRightTrigger());
-  new DriveJoystick(-1*Drive.driveSpeedgetDriverLeftTrigger());
+  public double getDriverLeftX() {
+    return driverController.getRawAxis(LEFT_HORIZ_AXIS);
+  }
 
-  if (getDriverLeftY() >.05 || getDriverLeftY() < -.05){
-    driverButtonY.whileHeld(new DriveJoystick(0.1));
-    driverButtonY.whenReleased(new DriveJoystick(0));
-  }*/
+  public double getDriverLeftTrigger() {
+    return driverController.getRawAxis(LEFT_Z_AXIS);
+  }
 
-  
+  public double getDriverRightTrigger() {
+    return driverController.getRawAxis(RIGHT_Z_AXIS);
+  }
 
-  
-//Robot.subystems.Drive.driveSpeed = 2;
+  public OI() {
+    driverButtonX.whenPressed(new IntakeRollerSolenoidToggle());
+    driverButtonY.whenPressed(new IntakePanelSolenoidToggle());
+    driverButtonB.whileHeld(new SpinRollers(1));
+    driverButtonA.whileHeld(new SpinRollers(-1));
+    driverButtonX.whenPressed(new IntakeRollerWheelSpinning(-1));
+    driverButtonX.whenReleased(new IntakeRollerWheelSpinning(1));
+    
+    driverButtonRightBumper.whenPressed(new IncreaseDriveSpeedJoystick());
+    driverButtonLeftBumper.whenPressed(new DecreaseDriveSpeedJoystick());
+
+    Left3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_LEFT));
+    Left2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_LEFT));
+    Left1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_LEFT));
+    LeftShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_BALL_SHIP,Robot.arm.ARM_LEFT));
+    LeftGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_LEFT));
+    Center3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_CENTER));
+    Center2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_CENTER));
+    Center1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_CENTER));
+    CenterShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_BALL_SHIP,Robot.arm.ARM_CENTER));
+    Right3.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_3,Robot.arm.ARM_RIGHT));
+    Right2.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_2,Robot.arm.ARM_RIGHT));
+    Right1.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_PANEL_1,Robot.arm.ARM_RIGHT));
+    RightShip.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_BALL_SHIP,Robot.arm.ARM_RIGHT));
+    RightGround.whenPressed(new GroupLiftArmProcedure(Robot.lift.LIFT_GROUND,Robot.arm.ARM_RIGHT));
+  }
 }
-
-}
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//// CREATING BUTTONS
-// One type of button is a joystick button which is any button on a
-//// joystick.
-// You create one by telling it which joystick it's on and which button
-// number it is.
-// Joystick stick = new Joystick(port);
-// Button button = new JoystickButton(stick, buttonNumber);
-
-// There are a few additional built in buttons you can use. Additionally,
-// by subclassing Button you can create custom triggers and bind those to
-// commands the same as any other Button.
-
-//// TRIGGERING COMMANDS WITH BUTTONS
-// Once you have a button, it's trivial to bind it to a button in one of
-// three ways:
-
-// Start the command when the button is pressed and let it run the command
-// until it is finished as determined by it's isFinished method.
-// button.whenPressed(new ExampleCommand());
-
-// Run the command while the button is being held down and interrupt it once
-// the button is released.
-// button.whileHeld(new ExampleCommand());
-
-// Start the command when the button is released and let it run the command
-// until it is finished as determined by it's isFinished method.
-// button.whenReleased(new ExampleCommand());
-

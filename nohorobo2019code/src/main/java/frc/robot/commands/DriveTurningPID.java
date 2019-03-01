@@ -16,7 +16,6 @@ public class DriveTurningPID extends Command {
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
-        Robot.drive.enablePID();
     	Robot.drive.pidDriveTurning.incrementDesiredValue(distance);
     }
 

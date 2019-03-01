@@ -11,21 +11,17 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class SpinRollerWhenOut extends Command {
-  double speed;
   public SpinRollerWhenOut() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.intake);
-    this.speed = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if(Robot.intake.RollerSolenoidStatus()){
-      Robot.intake.SetRollerMotors(-.3);
+    if(Robot.intake.getRollerSolenoidStatus()){
+      Robot.intake.setRollerMotors(-.3);//in
     }
-    else Robot.intake.SetRollerMotors(-.3);
+    else Robot.intake.setRollerMotors(-1.0);//out
   }
 
   // Called repeatedly when this Command is scheduled to run

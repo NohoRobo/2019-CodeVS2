@@ -21,14 +21,7 @@ import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.*;
 
-/**
- * Add your docs here.
- * 
- * 
- */
 public class Drive extends Subsystem implements PIDSubSystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   CANSparkMax leftFront = new CANSparkMax(RobotMap.sparkMaxLeftFront, MotorType.kBrushless);
   CANSparkMax leftMiddle = new CANSparkMax(RobotMap.sparkMaxLeftMiddle, MotorType.kBrushless);
   CANSparkMax leftBack = new CANSparkMax(RobotMap.sparkMaxLeftBack, MotorType.kBrushless);
@@ -42,7 +35,7 @@ public class Drive extends Subsystem implements PIDSubSystem {
   CANEncoder rightMiddleEncoder = new CANEncoder(rightMiddle);
   CANEncoder rightBackEncoder = new CANEncoder(rightBack);
 
-public double invert = 1;
+  public double invert = 1;
   public double driveSpeed = 1;
   private double speedStraight = 0;
   private double speedTurning  = 0;
@@ -57,12 +50,7 @@ public double invert = 1;
 
   @Override
   public void initDefaultCommand() {
-
     setDefaultCommand(new DriveJoystick());
-
-    //setDefaultCommand(new DriveJoystick(-1*Robot.m_oi.getDriverLeftTrigger()));
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
   }
 
   
@@ -75,15 +63,15 @@ public double invert = 1;
     setDriveRight(0);
   }
   public void setDriveLeft(double speed){
-   //this.leftFront.set(-speed);
-    //this.leftMiddle.set(-speed);
-    //this.leftBack.set(-speed);
+    this.leftFront.set(-speed);
+    this.leftMiddle.set(-speed);
+    this.leftBack.set(-speed);
   }
 
   public void setDriveRight(double speed){
-    //this.rightFront.set(speed);
-    //this.rightMiddle.set(speed);
-    //this.rightBack.set(speed);
+    this.rightFront.set(speed);
+    this.rightMiddle.set(speed);
+    this.rightBack.set(speed);
   }
 
   public void setDriveStraight(double speed){
@@ -97,7 +85,7 @@ public double invert = 1;
     this.setDriveLeft(leftSpeed);
     this.setDriveRight(rightSpeed);
   }
-  public double  checkStickDeadzone(double speed){
+  public double checkStickDeadzone(double speed){
     if(Math.abs(speed)>Robot.m_oi.STICK_DEADZONE) return speed;
     else return 0;
   }
@@ -120,7 +108,6 @@ public double invert = 1;
     if (this.driveSpeed >= 1){
       this.driveSpeed = 1;
     }
-    //return driveSpeed;
   }
 
   public void decreaseMaxSpeed(){
@@ -128,44 +115,28 @@ public double invert = 1;
     if (this.driveSpeed <= .25){
       this.driveSpeed = .25;
     }
-    //return driveSpeed;
   }
-
-
-
   public double getDriveRF(){
-
     return rightFrontEncoder.getPosition();
-
   }
   public double getDriveRM(){
-
     return rightMiddleEncoder.getPosition();
-
   }
 
   public double getDriveRB(){
-
     return rightBackEncoder.getPosition();
-
   }
 
   public double getDriveLF(){
-
     return leftFrontEncoder.getPosition();
-
   }
 
   public double getDriveLM(){
-
     return leftMiddleEncoder.getPosition();
-
   }
 
   public double getDriveLB(){
-
     return leftBackEncoder.getPosition();
-
   }
 
   /*public double setMaxSpeed(double toSet){
