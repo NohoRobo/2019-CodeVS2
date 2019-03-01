@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   public static Lift lift = new Lift();
   public static OI oi;
 
-  public static boolean onLeftSideOfField;
+  public static boolean onLeftSideOfField = true;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
@@ -34,10 +34,11 @@ public class Robot extends TimedRobot {
  @Override
   public void robotInit() {
     oi = new OI();
-    chooser.setDefaultOption("No Auton", new DriveStop());
-    chooser.addOption("Left Auton", new GroupAuton(true));
-    chooser.addOption("Right Auton", new GroupAuton(false));
-    SmartDashboard.putData("Auto mode", chooser);
+    chooser.setDefaultOption("No Auton Left", new SetSideOfFieldIsLeft(true));
+    chooser.setDefaultOption("No Auton Right", new SetSideOfFieldIsLeft(false));
+    chooser.addOption("Left Side", new GroupAuton(true));
+    chooser.addOption("Right side", new GroupAuton(false));
+    SmartDashboard.putData("Field Side", chooser);
   }
 
   /**

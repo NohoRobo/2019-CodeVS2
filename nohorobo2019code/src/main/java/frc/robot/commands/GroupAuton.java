@@ -10,9 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class GroupAuton extends CommandGroup {
-  boolean isLeft;
-  public GroupAuton(boolean isLeft) {
-    this.isLeft = isLeft;
+  public GroupAuton(boolean onLeftSideOfField) {
+    addSequential(new SetSideOfFieldIsLeft(onLeftSideOfField));
     //addSequential();
     // Add Commands here:
     // e.g. addSequential(new Command1());
