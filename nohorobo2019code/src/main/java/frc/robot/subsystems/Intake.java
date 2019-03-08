@@ -14,24 +14,26 @@ import edu.wpi.first.wpilibj.Solenoid;
 //import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.GroupIntakeDefault;
 import frc.robot.commands.SpinRollerWhenOut;
 
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  VictorSPX RollerMotor = new VictorSPX(RobotMap.intake775);
+  /*VictorSPX RollerMotor = new VictorSPX(RobotMap.intake775);
   Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
   Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
   Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
+  */
   //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
 
-  public final double BALL_RANGE = 2;
+  //public final double BALL_RANGE = 2;
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new SpinRollerWhenOut());
+    setDefaultCommand(new GroupIntakeDefault());
   }
-  
+  /*
   public void setRollerMotors(double speed){
     RollerMotor.set(ControlMode.PercentOutput, speed);
   }
@@ -56,7 +58,7 @@ public class Intake extends Subsystem {
   public boolean getPanelPistonOut(){
     return LeftPanelSolenoid.get();
   }
-
+*/
   /*
   public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
@@ -71,4 +73,5 @@ public class Intake extends Subsystem {
     return UltrasonicSensor.getRangeInches() < BALL_RANGE;
   }
   */
+  
 }

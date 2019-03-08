@@ -14,10 +14,10 @@ public class PIDLift extends PID{
         super(kP, kI, kD, minErrorI, maxErrorI, maxPowerI, acceptableError, acceptableVelocity, reverseSensor);
         this.liftEncoder = liftEncoder;
     }
-    protected double getSensorPosition(){
+    public double getSensorPosition(){
         return liftEncoder.getDistance();
     }
-    protected double getSensorVelocity(){
+    public double getSensorVelocity(){
         return liftEncoder.getRate();
     }
 }

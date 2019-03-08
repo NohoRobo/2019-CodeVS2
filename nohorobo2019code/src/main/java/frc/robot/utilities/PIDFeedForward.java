@@ -9,8 +9,8 @@ public abstract class PIDFeedForward extends PID{
         super(kP, kI, kD, minErrorI, maxErrorI, maxPowerI, acceptableError, acceptableVelocity, reverseSensor);
     }
     protected abstract double calculateFeedForwardTerm();
-    protected abstract double getSensorPosition();
-    protected abstract double getSensorVelocity();
+    public abstract double getSensorPosition();
+    public abstract double getSensorVelocity();
     public double getMotorPower(){
         return this.calculatePIDValue() + this.calculateFeedForwardTerm();
     }

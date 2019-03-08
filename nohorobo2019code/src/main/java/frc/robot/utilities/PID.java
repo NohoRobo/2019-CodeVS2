@@ -12,7 +12,7 @@ public abstract class PID {
     public double acceptableVelocity;
     public boolean reverseSensor;
     
-	private double error;
+	public double error;
 	private double desiredValue;
 	private double pVal;
 	private double iVal;
@@ -40,11 +40,10 @@ public abstract class PID {
 
     //returns motorValue for given PID loop struct
     double calculatePIDValue(){
-        sensorPosition = getSensorPosition();
-        sensorVelocity = getSensorVelocity();
+        this.sensorPosition = getSensorPosition();
+        this.sensorVelocity = getSensorVelocity();
         //calculate error
         this.error = this.desiredValue-(this.reverseSensor?-1:1)*sensorPosition;
-
         //set P value
         this.pVal = this.error;
 
@@ -74,12 +73,9 @@ public abstract class PID {
     public void setDesiredValue(double value){this.desiredValue = value;}
     public double getDesiredValue(){return this.desiredValue;}
 
-       
-    
-    protected abstract double getSensorPosition();
-    protected abstract double getSensorVelocity();
+    public abstract double getSensorPosition();
+    public abstract double getSensorVelocity();
     public double getMotorPower(){
         return this.calculatePIDValue();
-        
     }
 }

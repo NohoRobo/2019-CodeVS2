@@ -20,11 +20,11 @@ public class PIDDriveStraight extends PIDDrive{
         leftFrontCANEncoder, leftMiddleCANEncoder, leftBackCANEncoder, rightFrontCANEncoder, rightMiddleCANEncoder, rightBackCANEncoder);
     }
 
-    protected double getSensorPosition(){
+    public double getSensorPosition(){
         return (super.getGoodCANEncoderValue(leftFrontCANEncoder.getPosition(), leftMiddleCANEncoder.getPosition(), leftBackCANEncoder.getPosition()) +
         super.getGoodCANEncoderValue(rightFrontCANEncoder.getPosition(), rightMiddleCANEncoder.getPosition(), rightBackCANEncoder.getPosition()))/2;
     }
-    protected double getSensorVelocity(){
+    public double getSensorVelocity(){
         return (super.getGoodCANEncoderValue(leftFrontCANEncoder.getVelocity(), leftMiddleCANEncoder.getVelocity(), leftBackCANEncoder.getVelocity()) +
         super.getGoodCANEncoderValue(rightFrontCANEncoder.getVelocity(), rightMiddleCANEncoder.getVelocity(), rightBackCANEncoder.getVelocity()))/2;
     }

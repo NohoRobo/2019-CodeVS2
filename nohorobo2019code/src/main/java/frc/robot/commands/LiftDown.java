@@ -10,19 +10,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class SpinRollers extends Command {
-  double speed;
-  public SpinRollers(double speed) {
+public class LiftDown extends Command {
+  public LiftDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
-    this.speed = speed;
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //Robot.intake.setRollerMotors(this.speed);
+    Robot.lift.setTalon1Speed(-.3);
+    Robot.lift.setTalon2Speed(-.3);
   }
 
   // Called repeatedly when this Command is scheduled to run

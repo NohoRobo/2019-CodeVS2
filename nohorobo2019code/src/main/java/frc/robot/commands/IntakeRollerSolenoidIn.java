@@ -26,7 +26,7 @@ public class IntakeRollerSolenoidIn extends Command {
   @Override
   protected void execute() {
 
-    Robot.intake.retractPanelPistons();;
+    //Robot.intake.retractPanelPistons();;
     
   }
 

@@ -21,11 +21,11 @@ public class PIDDriveTurning extends PIDDrive{
         leftFrontCANEncoder, leftMiddleCANEncoder, leftBackCANEncoder, rightFrontCANEncoder, rightMiddleCANEncoder, rightBackCANEncoder);
     }
 
-    protected double getSensorPosition(){//or maybe make this use the gyro
+    public double getSensorPosition(){//or maybe make this use the gyro
         return super.getGoodCANEncoderValue(leftFrontCANEncoder.getPosition(), leftMiddleCANEncoder.getPosition(), leftBackCANEncoder.getPosition()) -
         super.getGoodCANEncoderValue(rightFrontCANEncoder.getPosition(), rightMiddleCANEncoder.getPosition(), rightBackCANEncoder.getPosition());
     }
-    protected double getSensorVelocity(){
+    public double getSensorVelocity(){
         return super.getGoodCANEncoderValue(leftFrontCANEncoder.getVelocity(), leftMiddleCANEncoder.getVelocity(), leftBackCANEncoder.getVelocity()) -
         super.getGoodCANEncoderValue(rightFrontCANEncoder.getVelocity(), rightMiddleCANEncoder.getVelocity(), rightBackCANEncoder.getVelocity());
     }

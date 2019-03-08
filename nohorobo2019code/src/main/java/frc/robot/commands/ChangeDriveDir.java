@@ -8,32 +8,41 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class SpinRollers extends Command {
-  double speed;
-  public SpinRollers(double speed) {
+public class ChangeDriveSpeed extends Command {
+  public ChangeDriveSpeed() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
-    this.speed = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //Robot.intake.setRollerMotors(this.speed);
+
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+    int driveDirection = 1;
+
+    if (driveDirection == 1){
+      driveDirection = 0;
+    }
+
+    if (driveDirection == 0){
+      driveDirection = 1;
+    }
+
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

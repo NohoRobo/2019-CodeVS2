@@ -17,10 +17,10 @@ public class PIDArm extends PIDFeedForward{
     protected double calculateFeedForwardTerm(){
         return 0/*some code that finds drive acceleration, and combines it with arm angle*/;
     }
-    protected double getSensorPosition(){
-        return armEncoder.getSelectedSensorPosition();
+    public double getSensorPosition(){
+        return -1*armEncoder.getSelectedSensorPosition();
     }
-    protected double getSensorVelocity(){
-        return armEncoder.getSelectedSensorVelocity();
+    public double getSensorVelocity(){
+        return -1*armEncoder.getSelectedSensorVelocity();
     }
 }

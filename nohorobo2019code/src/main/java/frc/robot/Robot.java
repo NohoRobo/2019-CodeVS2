@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -21,10 +23,11 @@ public class Robot extends TimedRobot {
   public static Intake intake = new Intake();
   public static Lift lift = new Lift();
   public static OI oi;
-
   public static boolean onLeftSideOfField = true;
 
   Command autonomousCommand;
+  //UsbCamera Cam1 = CameraServer.getInstance().startAutomaticCapture();
+  //UsbCamera Cam2 = CameraServer.getInstance().startAutomaticCapture();
   SendableChooser<Command> chooser = new SendableChooser<>();
 
  /**
@@ -33,12 +36,15 @@ public class Robot extends TimedRobot {
  */
  @Override
   public void robotInit() {
+
     oi = new OI();
     chooser.setDefaultOption("No Auton Left", new SetSideOfFieldIsLeft(true));
     chooser.setDefaultOption("No Auton Right", new SetSideOfFieldIsLeft(false));
     chooser.addOption("Left Side", new GroupAuton(true));
     chooser.addOption("Right side", new GroupAuton(false));
     SmartDashboard.putData("Field Side", chooser);
+    CameraServer.getInstance().startAutomaticCapture(0);
+    CameraServer.getInstance().startAutomaticCapture(1);
   }
 
   /**
@@ -110,6 +116,7 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
           autonomousCommand.cancel();
     }
+    //Robot.lift.setDesiredValuePID(0);
   }
 
   /**
@@ -127,8 +134,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("LeftBackEncoder", Robot.drive.getDriveLB());
 
     SmartDashboard.putNumber("LiftEncoder", Robot.lift.getLiftTalonEncoder());
-
-    SmartDashboard.putNumber("ArmEncoder", Robot.arm.getEncoder());
+    SmartDashboard.putNumber("Lift Motor Value", Robot.lift.getTalonSpeed());
+    
+    SmartDashboard.putNumber("PID encoder Value", Robot.lift.pid.getSensorPosition());
+    
+    SmartDashboard.putNumber("PID error Value", Robot.lift.pid.error);
+    //SmartDashboard.putNumber("ArmEncoder", Robot.arm.getEncoder());
 
 
 

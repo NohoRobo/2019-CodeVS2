@@ -10,30 +10,38 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class SpinRollers extends Command {
-  double speed;
-  public SpinRollers(double speed) {
+public class OperatorLift extends Command {
+  public OperatorLift() {
+
+
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.intake);
-    this.speed = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //Robot.intake.setRollerMotors(this.speed);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
+   // double liftSpeed = Robot.drive.checkStickDeadzone(
+      //Robot.oi.opController.getRawAxis(3)-Robot.oi.opController.getRawAxis(2));
+
+    //Robot.lift.setTalon1Speed(liftSpeed/2);
+    //Robot.lift.setTalon2Speed(liftSpeed/2); 
+
+
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

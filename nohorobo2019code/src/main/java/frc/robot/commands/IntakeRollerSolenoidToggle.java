@@ -16,16 +16,16 @@ public class IntakeRollerSolenoidToggle extends Command {
     // eg. requires(chassis);
     requires(Robot.intake);
   }
-
+  
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    if (Robot.intake.getRollerSolenoidOut()){
-      Robot.intake.retractRollerSolenoid();;
-    }
-    else{
-      Robot.intake.extendRollerSolenoid();;
-    }
+    //if (Robot.intake.getRollerSolenoidOut()){
+    //  Robot.intake.retractRollerSolenoid();;
+    //}
+    //else{
+    //  Robot.intake.extendRollerSolenoid();;
+    //}
   }
   
 

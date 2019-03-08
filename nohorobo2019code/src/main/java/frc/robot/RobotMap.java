@@ -38,17 +38,21 @@ public class RobotMap {
   public static int sparkMaxRightBack = 2;
 
   //Lift
-  public static int liftEncoderA = 3; 
-  public static int liftEncoderB = 2; 
+  public static int liftEncoderA = 2; 
+  public static int liftEncoderB = 3; 
   public static int liftRight775 = 1;
   public static int liftLeft775 = 3;
   //Arm
   public static int swingArm775 = 2; 
   //Intake
   public static int intake775 = 3;
-  public static int intakeRollerSolenoid = 4; //temp
-  public static int intakeLeftPistonSolenoid = 3; //temp
-  public static int intakeRightPistonSolenoid = 2; //temp
+  public static int intakeRollerSolenoid = 4; 
+  public static int intakeLeftPistonSolenoid = 3; 
+  public static int intakeRightPistonSolenoid = 2; 
+
+  //Camera
+  public static int camera = 0;
+
   //public static int intakeUltrasonicPing = 3; //temp
   //public static int intakeUltrasonicEcho = 4; //temp
 }

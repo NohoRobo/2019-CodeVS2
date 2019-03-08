@@ -39,6 +39,6 @@ public abstract class PIDDrive extends PID{
         }
         return (CANEncoder1+CANEncoder2)/2.0;
     }
-    protected abstract double getSensorPosition();
-    protected abstract double getSensorVelocity();
+    public abstract double getSensorPosition();
+    public abstract double getSensorVelocity();
 }

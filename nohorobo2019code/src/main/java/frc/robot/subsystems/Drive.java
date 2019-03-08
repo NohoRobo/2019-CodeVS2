@@ -78,7 +78,7 @@ public class Drive extends Subsystem implements PIDSubSystem {
     setFinalDrive();
   }
   private void setFinalDrive(){
-    setDriveMotors(Utilities.limit(this.driveSpeed * Math.pow(this.speedStraight + this.speedTurning,3),-1,1), Utilities.limit(this.driveSpeed*Math.pow(this.speedStraight - this.speedTurning,3),-1,1));
+    setDriveMotors(Utilities.limit(this.driveSpeed * ((.6*Math.pow(this.speedStraight - this.speedTurning,3)+(.4*(this.speedStraight - this.speedTurning)))),-1,1), Utilities.limit(this.driveSpeed*((.6*Math.pow(this.speedStraight + this.speedTurning,3)+(.4*(this.speedStraight + this.speedTurning)))) ,-1,1));
   }
   public void setDriveMotors(double leftSpeed, double rightSpeed){
     this.setDriveLeft(leftSpeed);
