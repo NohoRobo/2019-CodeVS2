@@ -64,7 +64,7 @@ public class OI {
   Button driverButtonStart2 = new JoystickButton(opController, 8);
   */
 
-  public Joystick operatorController = new Joystick(1);
+  /*public Joystick operatorController = new Joystick(1);
   Button Left3 = new JoystickButton(operatorController, 1);
   Button Left2 = new JoystickButton(operatorController, 2);
   Button Left1 = new JoystickButton(operatorController, 3);
@@ -78,7 +78,7 @@ public class OI {
   Button Right2 = new JoystickButton(operatorController, 11);
   Button Right1 = new JoystickButton(operatorController, 12);
   Button RightShip = new JoystickButton(operatorController, 13);
-  Button RightGround = new JoystickButton(operatorController, 14);
+  Button RightGround = new JoystickButton(operatorController, 14);*/
 
 
 
