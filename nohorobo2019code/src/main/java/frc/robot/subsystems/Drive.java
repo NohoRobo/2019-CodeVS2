@@ -40,6 +40,7 @@ public class Drive extends Subsystem implements PIDSubSystem {
   public double driveSpeed = 1;
   private double speedStraight = 0;
   private double speedTurning  = 0;
+  public double direction = 1;
 
   public PID pidDriveStraight = new PIDDriveStraight(0, 0, 0, 0, 0, 0, 0, 0, false,
   leftFrontEncoder, leftMiddleEncoder, leftBackEncoder,
@@ -61,16 +62,16 @@ public class Drive extends Subsystem implements PIDSubSystem {
 
   public void setDriveLeft(double speed){
     speed *= reverse();
-    this.leftFront.set(-speed);
-    this.leftMiddle.set(-speed);
-    this.leftBack.set(-speed);
+    this.leftFront.set(-speed*direction);
+    this.leftMiddle.set(-speed*direction);
+    this.leftBack.set(-speed*direction);
   }
 
   public void setDriveRight(double speed){
     speed *= reverse();
-    this.rightFront.set(speed);
-    this.rightMiddle.set(speed);
-    this.rightBack.set(speed);
+    this.rightFront.set(speed*direction);
+    this.rightMiddle.set(speed*direction);
+    this.rightBack.set(speed*direction);
   }
 
   public void setDriveStraight(double speed){
@@ -137,6 +138,19 @@ public class Drive extends Subsystem implements PIDSubSystem {
   public double getDriveLB(){
     return reverse()*leftBackEncoder.getPosition();
   }
+
+  public double getDirection(){
+    return this.direction;
+  }
+  public void ChangeAll(){
+    if (this.direction == 1){
+      this.direction = -1;
+    }
+    else {
+      this.direction = 1;
+    }
+  }
+
 
   private int reverse(){
     return (Robot.onLeftSideOfField?1:-1);

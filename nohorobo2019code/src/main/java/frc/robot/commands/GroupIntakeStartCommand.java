@@ -8,17 +8,40 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.Robot;
 
-public class GroupIntakeDefault extends CommandGroup {
+public class GroupIntakeStartCommand extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public GroupIntakeDefault() {
+
+  double startUsed = 0;
+
+  public GroupIntakeStartCommand() {
+
+    if (Robot.intake.getPanelBaseSolenoidOut()){
+      addSequential(new IntakePanelBaseIn());
+    }
+    else{
+      if (startUsed == 0){
+        addSequential(new IntakePanelBaseOut());
+        addSequential(new IntakePanelSolenoidOut());
+        addSequential(new LiftPIDLevel1());
+        addSequential(new IntakePanelSolenoidIn());
+        startUsed = 1;
+      }
+      else if (startUsed == 1){
+        addSequential(new IntakePanelBaseOut());
+      }
+
+    }
+
+    
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new SpinRollerWhenOut());
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

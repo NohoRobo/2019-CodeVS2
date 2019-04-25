@@ -39,6 +39,7 @@ public class Drive extends Subsystem implements PIDSubSystem {
   public double driveSpeed = 1;
   private double speedStraight = 0;
   private double speedTurning  = 0;
+  public double direction = 1;
 
 
 
@@ -106,6 +107,39 @@ public class Drive extends Subsystem implements PIDSubSystem {
     this.driveSpeed -= 0.25;
     if (this.driveSpeed <= .25){
       this.driveSpeed = .25;
+    }
+  }
+
+
+  public void ChangeDir1(){
+    //if (direction == 1){
+      this.direction = -1;
+      System.out.print("Direction change works");
+    //}
+
+    /*if (direction == -1){
+      direction = 1;
+    }*/
+  }
+
+  public void ChangeDir2(){
+    //if (direction == 1){
+      this.direction = 1;
+    //}
+
+    /*if (direction == -1){
+      direction = 1
+    }*/
+  }
+
+
+  public void ChangeAll(){
+    if (this.direction == 1){
+      this.direction = -1;
+    }
+
+    else if (this.direction == -1){
+      this.direction = 1;
     }
   }
   /*public double getDriveRF(){

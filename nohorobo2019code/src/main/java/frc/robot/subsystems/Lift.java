@@ -29,30 +29,32 @@ public class Lift extends Subsystem implements PIDSubSystem {
   public TalonSRX liftTalon2 = new TalonSRX(RobotMap.liftLeft775);
   Encoder liftEncoder = new Encoder(RobotMap.liftEncoderA, RobotMap.liftEncoderB, false, Encoder.EncodingType.k4X);
   public double PIDSpeed = 0;
-  public PID pid = new PIDLift(0.0005, 0, 0, 0, 0, 0, 0, 0, false, liftEncoder);
+  public PID pid = new PIDLift(0.00005, 0, 0, 150, 0, 0, 0, 0, false, liftEncoder);
   
   public boolean ballHeld = false;
+  public double height = 0;
 
   public final double LIFT_MAX_TURNING = 0;
   public final double LIFT_MIN_TURNING = 0;
-  public final double LIFT_GROUND = 0;
-  public final double LIFT_PANEL_3 = 0;
-  public final double LIFT_PANEL_2 = 0;
-  public final double LIFT_PANEL_1 = LIFT_GROUND;
-  public final double LIFT_BALL_3 = 0;
-  public final double LIFT_BALL_2 = 0;
-  public final double LIFT_BALL_1 = 0;
-  public final double LIFT_BALL_SHIP = 0;
+  public final double LIFT_PANEL_GROUND = 10000;
+  public final double LIFT_PANEL_3 = 83450;
+  public final double LIFT_PANEL_2 = 47450;
+  public final double LIFT_PANEL_1 = LIFT_PANEL_GROUND;
+  public final double LIFT_BALL_GROUND = -1050;
+  public final double LIFT_BALL_3 = 87600;
+  public final double LIFT_BALL_2 = 55975;
+  public final double LIFT_BALL_1 = 19540;
+  public final double LIFT_BALL_SHIP = 39300;
 
 
   @Override
   public void initDefaultCommand() {
-
-
-
+    setDefaultCommand(new LiftStop());
+    //setDefaultCommand(new LiftStop());
+    
     //setDefaultCommand(new TestingSparkMaxControllers(0));
     //setDefaultCommand(new OperatorLift());
-    setDefaultCommand(new LiftPIDSet(13000));
+    
     //setDefaultCommand(new TestingSparkMaxControllers(Robot.m_oi.getDriverLeftY()));
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
@@ -65,7 +67,7 @@ public void setTalon1Speed(double speed){
     liftTalon1.set(ControlMode.PercentOutput, -speed);
   }
 public void setTalon2Speed(double speed){
-   liftTalon2.set(ControlMode.PercentOutput, -speed);
+   liftTalon2.set(ControlMode.PercentOutput, speed);
 }
 
   public double getTalonSpeed(){
@@ -75,9 +77,9 @@ public double getDesiredValuePID(){
   return pid.getDesiredValue();
 }
 public void setLiftMotorsPID(){
-  this.PIDSpeed = Utilities.limit(this.pid.getMotorPower(),-.3,.3);
+  this.PIDSpeed = Utilities.limit(this.pid.getMotorPower(),-1,1 );
   this.setTalon1Speed(this.PIDSpeed);
-  this.setTalon1Speed(this.PIDSpeed);
+  this.setTalon2Speed(this.PIDSpeed);
 }
 public void setDesiredValuePID(double value){
   pid.setDesiredValue(value);
@@ -93,6 +95,10 @@ public void pidSetMotors(){
   double power = Utilities.limit(pid.getMotorPower(),-.3,.3);
   setTalon1Speed(power);
   setTalon2Speed(power);
+}
+public void ToggleBallHeights(){
+  if (this.ballHeld) ballHeld = false;
+  else this.ballHeld = true;
 }
 /*public void setTalonEncoder(double position){
 

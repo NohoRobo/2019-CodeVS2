@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ChangeDir;
+import frc.robot.commands.ChangeDirBack;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -104,6 +105,8 @@ public class OI {
   public OI (){
 
     driverButtonA.whenPressed(new ChangeDir());
+    driverButtonB.whenPressed(new ChangeDirBack());
+    //driverButtonB.whenPressed(new ChangeDirBack());
 
 
 

@@ -10,30 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+public class ChangeDirBack extends Command {
+  
+  public ChangeDirBack() {
 
-
-/*void bith (int speed, int direction){
-  movemotor(speed*direction);
-}
-
-
-
-
-button1.whenpressed(bith(1, -1));
-button2.whenpressed(bith(1, 1));*/
-
-
-
-
-
-
-public class IntakeRollerWheelSpinning extends Command {
-  //public float rollerSpeed = 0;
-  double speed;
-  public IntakeRollerWheelSpinning(double speed) {
-    super("IntakeRollerWheelSpinning");
-    this.speed = speed;
-    requires(Robot.intake);
+    requires(Robot.drive);
+    
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -41,25 +23,28 @@ public class IntakeRollerWheelSpinning extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setRollerMotors(this.speed);
+
+    Robot.drive.ChangeDir2();
+
+
   }
-  
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
     
 
+    /*if (Robot.drive.direction == 1){
+      Robot.drive.direction = 1;
+    }
 
-    // solenoid in and button pressed
+    if (Robot.drive.direction == -1){
+      Robot.drive.direction = 1;
+    }*/
     
-    Robot.intake.setRollerMotors(this.speed);
-    
+    //System.out.print(Robot.drive.direction);
 
-
-    //button1.whenpressed(intakewheelspinning(1);
-    //button2.whenpressed(intakewheelspinning(-1);
-    //intake.SetRollerMotors();
 
   }
 

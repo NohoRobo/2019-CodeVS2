@@ -10,29 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
-
-/*void bith (int speed, int direction){
-  movemotor(speed*direction);
-}
-
-
-
-
-button1.whenpressed(bith(1, -1));
-button2.whenpressed(bith(1, 1));*/
-
-
-
-
-
-
-public class IntakeRollerWheelSpinning extends Command {
-  //public float rollerSpeed = 0;
-  double speed;
-  public IntakeRollerWheelSpinning(double speed) {
-    super("IntakeRollerWheelSpinning");
-    this.speed = speed;
+public class AAAIntakeSpam extends Command {
+  boolean isDone = false;
+  public AAAIntakeSpam() {
     requires(Robot.intake);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -41,32 +21,25 @@ public class IntakeRollerWheelSpinning extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setRollerMotors(this.speed);
   }
-  
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
 
-
-    // solenoid in and button pressed
-    
-    Robot.intake.setRollerMotors(this.speed);
-    
-
-
-    //button1.whenpressed(intakewheelspinning(1);
-    //button2.whenpressed(intakewheelspinning(-1);
-    //intake.SetRollerMotors();
-
+    Robot.intake.spamPanel();
+    long i = 1;
+    long r = 10000000;
+    while(i<r){
+      i++;
+    }
+    isDone = true;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return isDone;
   }
 
   // Called once after isFinished returns true

@@ -14,30 +14,41 @@ import edu.wpi.first.wpilibj.Solenoid;
 //import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.AAA;
+import frc.robot.commands.AAAIntakeSpam;
 import frc.robot.commands.GroupIntakeDefault;
+import frc.robot.commands.IntakeRollerWheelSpinning;
 import frc.robot.commands.SpinRollerWhenOut;
 
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  /*VictorSPX RollerMotor = new VictorSPX(RobotMap.intake775);
+  VictorSPX RollerMotor = new VictorSPX(RobotMap.intake775);
   Solenoid RollerSolenoid = new Solenoid(RobotMap.intakeRollerSolenoid);
-  Solenoid LeftPanelSolenoid = new Solenoid(RobotMap.intakeLeftPistonSolenoid);
-  Solenoid RightPanelSolenoid = new Solenoid(RobotMap.intakeRightPistonSolenoid);
-  */
+  Solenoid PanelSolenoid = new Solenoid(RobotMap.intakePanelSolenoid);
+  Solenoid PanelBaseSolenoid = new Solenoid(RobotMap.intakePanelBaseSolenoid);
+  
   //Ultrasonic UltrasonicSensor = new Ultrasonic(RobotMap.intakeUltrasonicPing, RobotMap.intakeUltrasonicEcho);
 
   //public final double BALL_RANGE = 2;
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new GroupIntakeDefault());
+    setDefaultCommand(new IntakeRollerWheelSpinning(0.4));
   }
-  /*
+  
   public void setRollerMotors(double speed){
     RollerMotor.set(ControlMode.PercentOutput, speed);
   }
-  
+  public void extendPanelBaseSolenoid(){
+    PanelBaseSolenoid.set(true);
+  }
+  public void retractPanelBaseSolenoid(){
+    PanelBaseSolenoid.set(false);
+  }
+  public boolean getPanelBaseSolenoidOut(){
+    return PanelBaseSolenoid.get();
+  }
   public void extendRollerSolenoid(){
     RollerSolenoid.set(true);
   }
@@ -47,18 +58,27 @@ public class Intake extends Subsystem {
   public boolean getRollerSolenoidOut(){
     return RollerSolenoid.get();
   }
-  public void extendPanelPistons(){
-    LeftPanelSolenoid.set(true);
-    RightPanelSolenoid.set(true);
+  public void extendPanelSolenoid(){
+    PanelSolenoid.set(true);
   }
-  public void retractPanelPistons(){
-    LeftPanelSolenoid.set(false);
-    RightPanelSolenoid.set(false);
+  public void retractPanelSolenoid(){
+    PanelSolenoid.set(false);
   }
-  public boolean getPanelPistonOut(){
-    return LeftPanelSolenoid.get();
+  public boolean getPanelSolenoid(){
+    return PanelSolenoid.get();
   }
-*/
+
+  public void spamPanel(){
+    if(getPanelSolenoid()){
+      retractPanelSolenoid();
+    }
+    else if (!getPanelSolenoid()){
+      extendPanelSolenoid();
+    }
+    
+  }
+  
+
   /*
   public void UltrasonicRange(){
     UltrasonicSensor.getRangeInches();
@@ -74,4 +94,4 @@ public class Intake extends Subsystem {
   }
   */
   
-}
+  }

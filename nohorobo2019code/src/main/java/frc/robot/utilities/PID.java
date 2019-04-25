@@ -52,7 +52,7 @@ public abstract class PID {
             this.iVal += this.error;
         }
         else if(Math.abs(this.error)<=this.minErrorI){
-            this.iVal = 0;
+            this.pVal = 0;
         }
 
         //calculate derivative

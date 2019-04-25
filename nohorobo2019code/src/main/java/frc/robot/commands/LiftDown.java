@@ -20,8 +20,8 @@ public class LiftDown extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.lift.setTalon1Speed(-.3);
-    Robot.lift.setTalon2Speed(-.3);
+    Robot.lift.setTalon1Speed(-0.75);
+    Robot.lift.setTalon2Speed(-0.75);
   }
 
   // Called repeatedly when this Command is scheduled to run

@@ -10,57 +10,24 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-
-
-/*void bith (int speed, int direction){
-  movemotor(speed*direction);
-}
-
-
-
-
-button1.whenpressed(bith(1, -1));
-button2.whenpressed(bith(1, 1));*/
-
-
-
-
-
-
-public class IntakeRollerWheelSpinning extends Command {
-  //public float rollerSpeed = 0;
-  double speed;
-  public IntakeRollerWheelSpinning(double speed) {
-    super("IntakeRollerWheelSpinning");
-    this.speed = speed;
-    requires(Robot.intake);
+public class LiftPIDGround extends Command {
+  public LiftPIDGround() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setRollerMotors(this.speed);
+    if(Robot.lift.ballHeld) Robot.lift.height = Robot.lift.LIFT_BALL_GROUND;
+    else Robot.lift.height = Robot.lift.LIFT_PANEL_GROUND;
+    Robot.lift.setDesiredValuePID(Robot.lift.height);
   }
-  
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    
-
-
-    // solenoid in and button pressed
-    
-    Robot.intake.setRollerMotors(this.speed);
-    
-
-
-    //button1.whenpressed(intakewheelspinning(1);
-    //button2.whenpressed(intakewheelspinning(-1);
-    //intake.SetRollerMotors();
-
   }
 
   // Make this return true when this Command no longer needs to run execute()

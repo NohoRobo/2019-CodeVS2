@@ -10,11 +10,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.ChangeDriveDir;
 import frc.robot.commands.DecreaseDriveSpeedJoystick;
+import frc.robot.commands.GroupIntakeStartCommand;
 //import frc.robot.commands.GroupAuton;
 import frc.robot.commands.GroupLiftArmProcedure;
 import frc.robot.commands.IncreaseDriveSpeedJoystick;
+import frc.robot.commands.IntakePanelBaseToggle;
 import frc.robot.commands.IntakePanelSolenoidOut;
 import frc.robot.commands.IntakePanelSolenoidToggle;
 import frc.robot.commands.IntakeRollerSolenoidToggle;
@@ -23,8 +26,13 @@ import frc.robot.commands.LiftArmConfig;
 //import frc.robot.commands.SpinRollers;
 import frc.robot.commands.LiftConfigTemp;
 import frc.robot.commands.LiftDown;
+import frc.robot.commands.LiftPIDGround;
+import frc.robot.commands.LiftPIDLevel1;
+import frc.robot.commands.LiftPIDLevel2;
+import frc.robot.commands.LiftPIDLevel3;
+import frc.robot.commands.LiftPIDShip;
+import frc.robot.commands.ToggleBallHeights;
 
- 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and and command groups that allow control of the
@@ -33,60 +41,56 @@ import frc.robot.commands.LiftDown;
 public class OI {
 
   public static final int LEFT_HORIZ_AXIS = 0;
-	public static final int LEFT_VERT_AXIS = 1;
-	public static final int RIGHT_HORIZ_AXIS = 4;
-	public static final int RIGHT_VERT_AXIS = 5;
-	public static final int LEFT_Z_AXIS = 3;
-	public static final int RIGHT_Z_AXIS = 2;
+  public static final int LEFT_VERT_AXIS = 1;
+  public static final int RIGHT_HORIZ_AXIS = 4;
+  public static final int RIGHT_VERT_AXIS = 5;
+  public static final int LEFT_Z_AXIS = 3;
+  public static final int RIGHT_Z_AXIS = 2;
 
   public static final double STICK_DEADZONE = 0.1;
   public static final double TRIGGER_DEADZONE = 0.1;
   public static final double ARM_DEADZONE = 0.1;
 
-  public Joystick driverController = new Joystick(0);
+  public Joystick driverController = new Joystick(1);
   Button driverButtonA = new JoystickButton(driverController, 1);
-	Button driverButtonB = new JoystickButton(driverController, 2);
-	Button driverButtonX = new JoystickButton(driverController, 3);
-	Button driverButtonY = new JoystickButton(driverController, 4);
-	Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
+  Button driverButtonB = new JoystickButton(driverController, 1);
+  Button driverButtonX = new JoystickButton(driverController, 3);
+  Button driverButtonY = new JoystickButton(driverController, 4);
+  Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
   Button driverButtonRightBumper = new JoystickButton(driverController, 6);
-  Button driverButtonSelect = new JoystickButton(driverController, 7);
-  Button driverButtonStart = new JoystickButton(driverController, 8);
+  Button driverButtonSelect = new JoystickButton(driverController, 9);
+  Button driverButtonStart = new JoystickButton(driverController, 10);
 
-  /*public Joystick opController = new Joystick(2);
-	Button driverButtonA2 = new JoystickButton(opController, 1);
-	Button driverButtonB2 = new JoystickButton(opController, 2);
-	Button driverButtonX2 = new JoystickButton(opController, 3);
-	Button driverButtonY2 = new JoystickButton(opController, 4);
-	Button driverButtonLeftBumper2 = new JoystickButton(opController, 5);
-  Button driverButtonRightBumper2 = new JoystickButton(opController, 6);
-  Button driverButtonSelect2 = new JoystickButton(opController, 7);
-  Button driverButtonStart2 = new JoystickButton(opController, 8);
-  */
+  public Joystick opController = new Joystick(0);
+  Button operatorButtonA = new JoystickButton(opController, 1);
+  Button operatorButtonB = new JoystickButton(opController, 2);
+  Button operatorButtonX = new JoystickButton(opController, 3);
+  Button operatorButtonY = new JoystickButton(opController, 4);
+  Button operatorButtonLeftBumper = new JoystickButton(opController, 5);
+  Button operatorButtonRightBumper = new JoystickButton(opController, 6);
+  Button operatorButtonSelect = new JoystickButton(opController, 7);
+  Button operatorButtonStart = new JoystickButton(opController, 8);
 
-  /*public Joystick operatorController = new Joystick(1);
-  Button Left3 = new JoystickButton(operatorController, 1);
-  Button Left2 = new JoystickButton(operatorController, 2);
-  Button Left1 = new JoystickButton(operatorController, 3);
-  Button LeftShip = new JoystickButton(operatorController, 4);
-  Button LeftGround = new JoystickButton(operatorController, 5);
-  Button Center3 = new JoystickButton(operatorController, 6);
-  Button Center2 = new JoystickButton(operatorController, 7);
-  Button Center1 = new JoystickButton(operatorController, 8);
-  Button CenterShip = new JoystickButton(operatorController, 9);
-  Button Right3 = new JoystickButton(operatorController, 10);
-  Button Right2 = new JoystickButton(operatorController, 11);
-  Button Right1 = new JoystickButton(operatorController, 12);
-  Button RightShip = new JoystickButton(operatorController, 13);
-  Button RightGround = new JoystickButton(operatorController, 14);*/
+  /*
+   * public Joystick operatorController = new Joystick(2); Button Left3 = new
+   * JoystickButton(operatorController, 1); Button Left2 = new
+   * JoystickButton(operatorController, 2); Button Left1 = new
+   * JoystickButton(operatorController, 3); Button LeftShip = new
+   * JoystickButton(operatorController, 4); Button LeftGround = new
+   * JoystickButton(operatorController, 5); Button Center3 = new
+   * JoystickButton(operatorController, 6); Button Center2 = new
+   * JoystickButton(operatorController, 7); Button Center1 = new
+   * JoystickButton(operatorController, 8); Button CenterShip = new
+   * JoystickButton(operatorController, 9); Button Right3 = new
+   * JoystickButton(operatorController, 10); Button Right2 = new
+   * JoystickButton(operatorController, 11); Button Right1 = new
+   * JoystickButton(operatorController, 12); Button RightShip = new
+   * JoystickButton(operatorController, 13); Button RightGround = new
+   * JoystickButton(operatorController, 14);
+   */
 
-
-
-
-
-
-  //analog driver
-  public  double getDriverRightY() {
+  // analog driver
+  public double getDriverRightY() {
     return -driverController.getRawAxis(RIGHT_VERT_AXIS);
   }
 
@@ -110,56 +114,63 @@ public class OI {
     return driverController.getRawAxis(RIGHT_Z_AXIS);
   }
 
-
-
-
-
-
-//analog operator
-/*
-  public  double getOpRightY() {
-    return -opController.getRawAxis(RIGHT_VERT_AXIS);
-  }
-
-  public double getOpRightX() {
-    return opController.getRawAxis(RIGHT_HORIZ_AXIS);
-  }
-
-  public double getOpLeftY() {
-    return -opController.getRawAxis(LEFT_VERT_AXIS);
-  }
-
-  public double getOpLeftX() {
-    return opController.getRawAxis(LEFT_HORIZ_AXIS);
-  }
-
-  public double getOpLeftTrigger() {
-    return opController.getRawAxis(LEFT_Z_AXIS);
-  }
-
-  public double getOpRightTrigger() {
-    return opController.getRawAxis(RIGHT_Z_AXIS);
-  }
-  */
-
-
-
-
+  // analog operator
+  /*
+   * public double getOpRightY() { return
+   * -opController.getRawAxis(RIGHT_VERT_AXIS); }
+   * 
+   * public double getOpRightX() { return
+   * opController.getRawAxis(RIGHT_HORIZ_AXIS); }
+   * 
+   * public double getOpLeftY() { return -opController.getRawAxis(LEFT_VERT_AXIS);
+   * }
+   * 
+   * public double getOpLeftX() { return opController.getRawAxis(LEFT_HORIZ_AXIS);
+   * }
+   * 
+   * public double getOpLeftTrigger() { return
+   * opController.getRawAxis(LEFT_Z_AXIS); }
+   * 
+   * public double getOpRightTrigger() { return
+   * opController.getRawAxis(RIGHT_Z_AXIS); }
+   */
 
   public OI() {
-    driverButtonX.whenPressed(new IntakeRollerSolenoidToggle());
-    driverButtonY.whileHeld(new IntakePanelSolenoidOut());
+    driverButtonLeftBumper.whenPressed(new IntakeRollerSolenoidToggle());
+    driverButtonRightBumper.whenPressed(new IntakePanelBaseToggle());
+    driverButtonStart.whenPressed(new IntakePanelSolenoidOut());
+    driverButtonY.whileHeld(new LiftConfigTemp());
+    driverButtonA.whileHeld(new LiftDown());
+    driverButtonB.whenPressed(new IntakeRollerWheelSpinning(-1));
+    driverButtonX.whenPressed(new IntakeRollerWheelSpinning(0.4));
 
+    //driverButtonSelect.whenPressed(new IntakePanelBaseToggle());
+    //driverButtonStart.whileHeld(new IntakeRollerWheelSpinning(-1));
+    //driverButtonB.whenPressed(new LiftPIDGround());
+    //driverButtonX.whenPressed(new LiftPIDLevel2());
+
+    // run auton with button press (for testing)
+    // driverButtonB.whenPressed(new GroupAuton(true));
+
+    //driverButtonB.whileHeld(new IntakeRollerWheelSpinning(.5));
+    //driverButtonRightBumper.whileHeld(new LiftConfigTemp());
+    //driverButtonLeftBumper.whileHeld(new LiftDown());
     
 
+    /*operatorButtonA.whenPressed(new LiftPIDGround());
+    //operatorButtonY.whileHeld(new LiftConfigTemp());
+    //operatorButtonA.whileHeld(new LiftDown());
+    operatorButtonX.whenPressed(new LiftPIDLevel1());
+    operatorButtonY.whenPressed(new LiftPIDLevel2());
+    operatorButtonB.whenPressed(new LiftPIDLevel3());
+    operatorButtonRightBumper.whenPressed(new LiftPIDShip());
+    operatorButtonLeftBumper.whenPressed(new ToggleBallHeights());
+    operatorButtonSelect.whenPressed(new IntakePanelBaseToggle());
+    operatorButtonSelect.whenPressed(new GroupIntakeStartCommand());*/
+    //operatorButtonStart.whileHeld(new IntakeRollerWheelSpinning(-1));
+    //operatorButton
 
-    //run auton with button press (for testing)
-    //driverButtonB.whenPressed(new GroupAuton(true));
-
-    driverButtonB.whileHeld(new IntakeRollerWheelSpinning(.5));
-    driverButtonRightBumper.whileHeld(new LiftConfigTemp());
-    driverButtonLeftBumper.whileHeld(new LiftDown());
-    driverButtonA.whenPressed(new ChangeDriveDir());
+    //driverButtonA.whenPressed(new ChangeDriveDir());
     
     //driverButtonA.whileHeld(new LiftArmConfig());
     //driverButtonB.whenReleased(new IntakeRollerWheelSpinning(.1));

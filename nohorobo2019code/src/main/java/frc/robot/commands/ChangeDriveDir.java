@@ -8,9 +8,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
-public class ChangeDriveSpeed extends Command {
-  public ChangeDriveSpeed() {
+
+public class ChangeDriveDir extends Command {
+  
+  public ChangeDriveDir() {
+
+    requires(Robot.drive);
+    
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -18,31 +24,23 @@ public class ChangeDriveSpeed extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
-
+    //Robot.drive.ChangeAll();
+    if (Robot.drive.direction == 1){
+      Robot.drive.direction = -1;
+    }
+    else Robot.drive.direction = 1;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
 
-    int driveDirection = 1;
-
-    if (driveDirection == 1){
-      driveDirection = 0;
-    }
-
-    if (driveDirection == 0){
-      driveDirection = 1;
-    }
-
-
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

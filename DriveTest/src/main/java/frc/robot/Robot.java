@@ -86,6 +86,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
+
+
     //m_autonomousCommand = m_chooser.getSelected();
 
     /*
@@ -126,6 +128,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Direction:", Robot.drive.direction);
+
+
   }
 
   /**

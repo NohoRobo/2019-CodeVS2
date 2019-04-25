@@ -57,6 +57,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("RightFrontEncoder", Robot.drive.getDriveRF());
+    SmartDashboard.putNumber("RightMiddleEncoder", Robot.drive.getDriveRM());
+    SmartDashboard.putNumber("RightBackEncoder", Robot.drive.getDriveRB());
+    SmartDashboard.putNumber("LeftFrontEncoder", Robot.drive.getDriveLF());
+    SmartDashboard.putNumber("LeftMiddleEncoder", Robot.drive.getDriveLM());
+    SmartDashboard.putNumber("LeftBackEncoder", Robot.drive.getDriveLB());
+
+    SmartDashboard.putNumber("LiftEncoder", Robot.lift.getLiftTalonEncoder());
+    SmartDashboard.putNumber("Lift Motor Value", Robot.lift.getTalonSpeed());
+    
+    SmartDashboard.putNumber("PID encoder Value", Robot.lift.pid.getSensorPosition());
+    
+    SmartDashboard.putNumber("PID error Value", Robot.lift.pid.error);
+    SmartDashboard.putBoolean("SolenoidBase Value", Robot.intake.getPanelBaseSolenoidOut());
+    SmartDashboard.putNumber("Directionabclol", Robot.drive.direction);
+    SmartDashboard.putNumber("GetDirectionabc123", Robot.drive.getDirection());
+    SmartDashboard.putBoolean("Ball Held", Robot.lift.ballHeld);
+  
   }
 
   /**
@@ -126,19 +144,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
 
-    SmartDashboard.putNumber("RightFrontEncoder", Robot.drive.getDriveRF());
-    SmartDashboard.putNumber("RightMiddleEncoder", Robot.drive.getDriveRM());
-    SmartDashboard.putNumber("RightBackEncoder", Robot.drive.getDriveRB());
-    SmartDashboard.putNumber("LeftFrontEncoder", Robot.drive.getDriveLF());
-    SmartDashboard.putNumber("LeftMiddleEncoder", Robot.drive.getDriveLM());
-    SmartDashboard.putNumber("LeftBackEncoder", Robot.drive.getDriveLB());
-
-    SmartDashboard.putNumber("LiftEncoder", Robot.lift.getLiftTalonEncoder());
-    SmartDashboard.putNumber("Lift Motor Value", Robot.lift.getTalonSpeed());
-    
-    SmartDashboard.putNumber("PID encoder Value", Robot.lift.pid.getSensorPosition());
-    
-    SmartDashboard.putNumber("PID error Value", Robot.lift.pid.error);
+   
     //SmartDashboard.putNumber("ArmEncoder", Robot.arm.getEncoder());
 
 

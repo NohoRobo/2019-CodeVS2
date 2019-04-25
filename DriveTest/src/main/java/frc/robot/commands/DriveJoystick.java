@@ -39,9 +39,9 @@ public class DriveJoystick extends Command {
     Robot.drive.setDriveStraight(Math.pow(straightSpeed, 3.0)/2); 
     Robot.drive.setDriveTurning(Math.pow(turningSpeed, 3.0)/3);*/
 
-  
+  if (Robot.drive.direction == 1){
     
-//left deadzone
+//left deadzoneer
     if (Math.abs(Robot.oi.driverController.getRawAxis(1)) <= 0.15){
 
       Robot.drive.setDriveLeft(0);
@@ -50,7 +50,7 @@ public class DriveJoystick extends Command {
 //left drive joystick
     else if (Math.abs(Robot.oi.driverController.getRawAxis(1)) > 0.15){
 
-      Robot.drive.setDriveLeft(Robot.oi.driverController.getRawAxis(1));
+      Robot.drive.setDriveLeft(Robot.drive.direction*Robot.oi.driverController.getRawAxis(1));
 
     }
 //right deadzone
@@ -62,9 +62,38 @@ public class DriveJoystick extends Command {
 //right drive joystick
     else if (Math.abs(Robot.oi.driverController.getRawAxis(5)) > 0.15){
 
-      Robot.drive.setDriveRight(Robot.oi.driverController.getRawAxis(5));
+      Robot.drive.setDriveRight(Robot.drive.direction*Robot.oi.driverController.getRawAxis(5));
 
     }
+  }
+
+  if (Robot.drive.direction == -1){
+    
+    //left deadzoneer
+        if (Math.abs(Robot.oi.driverController.getRawAxis(5)) <= 0.15){
+    
+          Robot.drive.setDriveLeft(0);
+          
+        }
+    //left drive joystick
+        else if (Math.abs(Robot.oi.driverController.getRawAxis(5)) > 0.15){
+    
+          Robot.drive.setDriveLeft(Robot.drive.direction*Robot.oi.driverController.getRawAxis(5));
+    
+        }
+    //right deadzone
+        if (Math.abs(Robot.oi.driverController.getRawAxis(1)) <= 0.15){
+    
+          Robot.drive.setDriveRight(0);
+          
+      }
+    //right drive joystick
+        else if (Math.abs(Robot.oi.driverController.getRawAxis(1)) > 0.15){
+    
+          Robot.drive.setDriveRight(Robot.drive.direction*Robot.oi.driverController.getRawAxis(1));
+    
+        }
+      }
 
 
   }

@@ -9,16 +9,19 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class GroupIntakeDefault extends CommandGroup {
+public class AAA extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public GroupIntakeDefault() {
+  public AAA() {
+
+    addSequential(new AAAIntakeSpam());
+    addParallel(new IntakeRollerWheelSpinning(0.4));
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new SpinRollerWhenOut());
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

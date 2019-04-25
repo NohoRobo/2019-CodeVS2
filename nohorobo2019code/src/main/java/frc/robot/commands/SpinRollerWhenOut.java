@@ -18,11 +18,11 @@ public class SpinRollerWhenOut extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    /*if(Robot.intake.getRollerSolenoidOut()){
-      Robot.intake.setRollerMotors(-.5);//out
+    if(Robot.intake.getRollerSolenoidOut() && Robot.lift.getLiftTalonEncoder() < 3000){
+      Robot.intake.setRollerMotors(.9);//out
     }
-    else Robot.intake.setRollerMotors(-0.2);//in
-    */
+    else Robot.intake.setRollerMotors(0.3);//in
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
