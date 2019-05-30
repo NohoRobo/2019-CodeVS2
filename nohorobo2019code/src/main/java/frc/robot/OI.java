@@ -109,7 +109,7 @@ public class OI {
   public double getDriverLeftTrigger() {
     return driverController.getRawAxis(LEFT_Z_AXIS);
   }
-
+ 
   public double getDriverRightTrigger() {
     return driverController.getRawAxis(RIGHT_Z_AXIS);
   }
@@ -136,9 +136,9 @@ public class OI {
    */
 
   public OI() {
-    driverButtonLeftBumper.whenPressed(new IntakeRollerSolenoidToggle());
+    //driverButtonStart.whenPressed(new IntakeRollerSolenoidToggle());
     driverButtonRightBumper.whenPressed(new IntakePanelBaseToggle());
-    driverButtonStart.whenPressed(new IntakePanelSolenoidOut());
+    driverButtonLeftBumper.whenPressed(new IntakePanelSolenoidToggle());
     driverButtonY.whileHeld(new LiftConfigTemp());
     driverButtonA.whileHeld(new LiftDown());
     driverButtonB.whenPressed(new IntakeRollerWheelSpinning(-1));

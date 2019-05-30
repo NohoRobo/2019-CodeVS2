@@ -26,8 +26,6 @@ public class DriveJoystick extends Command {
     // eg. requires(chassis);
   }
 
-  
-   
 
   // Called just before this Command runs the first time
   @Override
@@ -48,14 +46,23 @@ public class DriveJoystick extends Command {
     }
     */
 
-    if(Math.abs(Robot.oi.driverController.getRawAxis(1)) > .15 || Math.abs(Robot.oi.driverController.getRawAxis(4)) > .15){
-        Robot.drive.setDriveLeft((0.5*(Math.pow(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)-(Robot.oi.driverController.getRawAxis(4)/3), -1, 1),3)+(.4*Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)-(Robot.oi.driverController.getRawAxis(4)), -1, 1)))));
-        Robot.drive.setDriveRight((0.5*(Math.pow(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)+(Robot.oi.driverController.getRawAxis(4)/3), -1, 1),3)+(.4*Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)+(Robot.oi.driverController.getRawAxis(4)), -1, 1)))));
+  /*if(Math.abs(Robot.oi.driverController.getRawAxis(1)) > .15 || Math.abs(Robot.oi.driverController.getRawAxis(4)) > .15){
+        Robot.drive.setDriveLeft(((Math.pow(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)-(Robot.oi.driverController.getRawAxis(4)/3), -1, 1),3)+(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)-(Robot.oi.driverController.getRawAxis(4)), -1, 1)))));
+        Robot.drive.setDriveRight(((Math.pow(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)+(Robot.oi.driverController.getRawAxis(4)/3), -1, 1),3)+(Utilities.limit(-1*Robot.oi.driverController.getRawAxis(1)+(Robot.oi.driverController.getRawAxis(4)), -1, 1)))));
         }
     else{
       Robot.drive.setDriveLeft(0);
       Robot.drive.setDriveRight(0);
+    }*/
+    if(Math.abs(Robot.oi.driverController.getRawAxis(1)) > .15 || Math.abs(Robot.oi.driverController.getRawAxis(5)) > .15){
+      Robot.drive.setDriveLeft(Robot.oi.driverController.getRawAxis(5)*-1);
+      Robot.drive.setDriveRight(Robot.oi.driverController.getRawAxis(1)*-1);
     }
+    else{
+      Robot.drive.setDriveLeft(0);
+      Robot.drive.setDriveRight(0);
+    }
+
 
 
   }
