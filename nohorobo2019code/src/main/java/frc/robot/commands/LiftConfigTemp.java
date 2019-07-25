@@ -28,8 +28,8 @@ public class LiftConfigTemp extends Command {
   @Override
   protected void initialize() {
 
-    Robot.lift.setTalon1Speed(0.75);
-    Robot.lift.setTalon2Speed(0.75);
+    Robot.lift.setTalon1Speed(0.5);
+    Robot.lift.setTalon2Speed(0.5);
 
     
     

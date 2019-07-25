@@ -41,7 +41,7 @@ public class IntakeRollerWheelSpinning extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.intake.setRollerMotors(this.speed);
+    //Robot.intake.setRollerMotors(this.speed);
   }
   
 

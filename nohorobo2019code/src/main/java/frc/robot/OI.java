@@ -51,17 +51,17 @@ public class OI {
   public static final double TRIGGER_DEADZONE = 0.1;
   public static final double ARM_DEADZONE = 0.1;
 
-  public Joystick driverController = new Joystick(1);
+  public Joystick driverController = new Joystick(0);
   Button driverButtonA = new JoystickButton(driverController, 1);
-  Button driverButtonB = new JoystickButton(driverController, 1);
+  Button driverButtonB = new JoystickButton(driverController, 2);
   Button driverButtonX = new JoystickButton(driverController, 3);
   Button driverButtonY = new JoystickButton(driverController, 4);
   Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
   Button driverButtonRightBumper = new JoystickButton(driverController, 6);
-  Button driverButtonSelect = new JoystickButton(driverController, 9);
-  Button driverButtonStart = new JoystickButton(driverController, 10);
+  Button driverButtonSelect = new JoystickButton(driverController, 8);
+  Button driverButtonStart = new JoystickButton(driverController, 9);
 
-  public Joystick opController = new Joystick(0);
+  public Joystick opController = new Joystick(1);
   Button operatorButtonA = new JoystickButton(opController, 1);
   Button operatorButtonB = new JoystickButton(opController, 2);
   Button operatorButtonX = new JoystickButton(opController, 3);
@@ -136,15 +136,15 @@ public class OI {
    */
 
   public OI() {
-    //driverButtonStart.whenPressed(new IntakeRollerSolenoidToggle());
+    driverButtonStart.whenPressed(new IntakeRollerSolenoidToggle());
     driverButtonRightBumper.whenPressed(new IntakePanelBaseToggle());
     driverButtonLeftBumper.whenPressed(new IntakePanelSolenoidToggle());
     driverButtonY.whileHeld(new LiftConfigTemp());
     driverButtonA.whileHeld(new LiftDown());
-    driverButtonB.whenPressed(new IntakeRollerWheelSpinning(-1));
-    driverButtonX.whenPressed(new IntakeRollerWheelSpinning(0.4));
+    driverButtonB.whileHeld(new IntakeRollerWheelSpinning(-1));
+    driverButtonX.whileHeld(new IntakeRollerWheelSpinning(1));
 
-    //driverButtonSelect.whenPressed(new IntakePanelBaseToggle());
+   // driverButtonSelect.whenPressed(new IntakeRollerSolenoidToggle());
     //driverButtonStart.whileHeld(new IntakeRollerWheelSpinning(-1));
     //driverButtonB.whenPressed(new LiftPIDGround());
     //driverButtonX.whenPressed(new LiftPIDLevel2());
