@@ -21,10 +21,10 @@ public class IntakeRollerSolenoidToggle extends Command {
   @Override
   protected void initialize() {
     if (Robot.intake.getRollerSolenoidOut()){
-      Robot.intake.retractRollerSolenoid();;
+      Robot.intake.retractRollerSolenoid();
     }
     else{
-      Robot.intake.extendRollerSolenoid();;
+      Robot.intake.extendRollerSolenoid();
     }
   }
   

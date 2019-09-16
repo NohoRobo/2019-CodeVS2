@@ -31,6 +31,7 @@ import frc.robot.commands.LiftPIDLevel1;
 import frc.robot.commands.LiftPIDLevel2;
 import frc.robot.commands.LiftPIDLevel3;
 import frc.robot.commands.LiftPIDShip;
+import frc.robot.commands.PanelIntakeMacro;
 import frc.robot.commands.ToggleBallHeights;
 
 /**
@@ -56,7 +57,7 @@ public class OI {
   Button driverButtonB = new JoystickButton(driverController, 2);
   Button driverButtonX = new JoystickButton(driverController, 3);
   Button driverButtonY = new JoystickButton(driverController, 4);
-  Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
+  public Button driverButtonLeftBumper = new JoystickButton(driverController, 5);
   Button driverButtonRightBumper = new JoystickButton(driverController, 6);
   Button driverButtonSelect = new JoystickButton(driverController, 8);
   Button driverButtonStart = new JoystickButton(driverController, 9);
@@ -136,13 +137,15 @@ public class OI {
    */
 
   public OI() {
-    driverButtonStart.whenPressed(new IntakeRollerSolenoidToggle());
-    driverButtonRightBumper.whenPressed(new IntakePanelBaseToggle());
-    driverButtonLeftBumper.whenPressed(new IntakePanelSolenoidToggle());
+    driverButtonLeftBumper.whenPressed(new IntakeRollerSolenoidToggle());
+    driverButtonRightBumper.whenPressed(new IntakePanelSolenoidToggle());
+    driverButtonB.whenPressed(new IntakePanelBaseToggle());
+    //driverButtonLeftBumper.whileHeld(new LiftConfigTemp());
     driverButtonY.whileHeld(new LiftConfigTemp());
     driverButtonA.whileHeld(new LiftDown());
-    driverButtonB.whileHeld(new IntakeRollerWheelSpinning(-1));
-    driverButtonX.whileHeld(new IntakeRollerWheelSpinning(1));
+    //driverButtonB.whileHeld(new IntakeRollerWheelSpinning(-1));
+    //driverButtonX.whileHeld(new IntakeRollerWheelSpinning(1));
+    
 
    // driverButtonSelect.whenPressed(new IntakeRollerSolenoidToggle());
     //driverButtonStart.whileHeld(new IntakeRollerWheelSpinning(-1));

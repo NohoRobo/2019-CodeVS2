@@ -9,19 +9,32 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
 
-public class LiftDown extends Command {
-  public LiftDown() {
+public class LiftDownControl extends Command {
+  public LiftDownControl() {
+
+    requires(Robot.lift);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.lift.setTalon1Speed(-0.4);
-    Robot.lift.setTalon2Speed(-0.4);
+    /*if ((Robot.oi.driverButtonLeftBumper.get())){
+      Robot.lift.setTalon1Speed(0.7);
+      Robot.lift.setTalon2Speed(0.7);
+    }
+    else if ((Robot.oi.driverController.getRawAxis(5)) > 0.1){
+      Robot.lift.setTalon1Speed(-0.5);
+      Robot.lift.setTalon2Speed(-0.5);
+    }
+    else{*/
+      Robot.lift.setTalon1Speed(0);
+      Robot.lift.setTalon2Speed(0);
+    //}
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,7 +45,7 @@ public class LiftDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

@@ -20,6 +20,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.LiftDownControl;
 import frc.robot.commands.LiftPIDSet;
 import frc.robot.commands.LiftStop;
 import frc.robot.commands.OperatorLift;
@@ -49,7 +50,7 @@ public class Lift extends Subsystem implements PIDSubSystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new LiftStop());
+    setDefaultCommand(new LiftDownControl());
     //setDefaultCommand(new LiftStop());
     
     //setDefaultCommand(new TestingSparkMaxControllers(0));

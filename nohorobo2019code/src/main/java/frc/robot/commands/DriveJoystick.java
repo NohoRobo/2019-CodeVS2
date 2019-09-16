@@ -55,8 +55,8 @@ public class DriveJoystick extends Command {
       Robot.drive.setDriveRight(0);
     }*/
     if(Math.abs(Robot.oi.driverController.getRawAxis(1)) > .15 || Math.abs(Robot.oi.driverController.getRawAxis(5)) > .15){
-      Robot.drive.setDriveLeft(Robot.oi.driverController.getRawAxis(5)*-1);
-      Robot.drive.setDriveRight(Robot.oi.driverController.getRawAxis(1)*-1);
+      Robot.drive.setDriveLeft(Math.pow((Robot.oi.driverController.getRawAxis(5)*-1), 3));
+      Robot.drive.setDriveRight(Math.pow((Robot.oi.driverController.getRawAxis(1)*-1), 3));
     }
     else{
       Robot.drive.setDriveLeft(0);
